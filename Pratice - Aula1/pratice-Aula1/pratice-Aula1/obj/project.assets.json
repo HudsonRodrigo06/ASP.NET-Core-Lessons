@@ -6074,11 +6074,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\www\\Pratice\\pratice-Aula1\\pratice-Aula1\\pratice-Aula1.csproj",
+      "projectUniqueName": "C:\\www\\ASP.NET-Core-Lessons\\Pratice - Aula1\\pratice-Aula1\\pratice-Aula1\\pratice-Aula1.csproj",
       "projectName": "pratice-Aula1",
-      "projectPath": "C:\\www\\Pratice\\pratice-Aula1\\pratice-Aula1\\pratice-Aula1.csproj",
+      "projectPath": "C:\\www\\ASP.NET-Core-Lessons\\Pratice - Aula1\\pratice-Aula1\\pratice-Aula1\\pratice-Aula1.csproj",
       "packagesPath": "C:\\Users\\Hudson\\.nuget\\packages\\",
-      "outputPath": "C:\\www\\Pratice\\pratice-Aula1\\pratice-Aula1\\obj\\",
+      "outputPath": "C:\\www\\ASP.NET-Core-Lessons\\Pratice - Aula1\\pratice-Aula1\\pratice-Aula1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Hudson\\AppData\\Roaming\\NuGet\\NuGet.Config",
