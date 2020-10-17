@@ -1,6 +1,6 @@
 # ASP.NET Core Lessons
  
-Aulas de CRUD com programação POO e MVC.
+Aulas de CRUD com programação OO e MVC.
 
 # Tecnologias utilizadas
 * ASP.NET Core
