@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Principal</title>
+</head>
+<body>
+
+    <form action="~/Principal/Logar" method="post">
+        <h1>Bem vindo!</h1>
+        <input type="text" name="user" value="" />
+        <input type="password" name="pwd" value="" />
+        <input type="submit" name="" value="OK" />
+    </form>
+    
+    <div>@ViewBag.Msg</div>
+
+</body>
+</html>
