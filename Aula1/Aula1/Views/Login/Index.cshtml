@@ -11,6 +11,16 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Oie</h1>
+    <h1>Autenticação</h1>
+    <form action="~/Login/Logar" method="post">
+        <input type="text" name="usuario" value="" />
+        <input type="password" name="senha" value="" />
+        <input type="submit" name="" value="Entrar" />
+    </form>
+
+    <div>
+        @ViewBag.ErrorLogin
+    </div>
+
 </body>
 </html>

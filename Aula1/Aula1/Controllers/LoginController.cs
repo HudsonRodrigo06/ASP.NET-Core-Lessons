@@ -12,5 +12,21 @@ namespace Aula1.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Logar(string usuario, string senha)
+		{
+			if(usuario == "adm" && senha == "123")
+			{
+
+			}
+			else
+			{
+				ViewBag.ErrorLogin = "Dados inválidos";
+			}
+
+
+
+			return View("Index");
+		}
 	}
 }
