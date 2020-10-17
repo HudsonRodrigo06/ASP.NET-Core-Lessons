@@ -1,9 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,6 +6,18 @@
     <title>_Layout</title>
 </head>
 <body>
-  
+
+    <header>
+        Header Comum <!-- Layouts repetidos -->
+    </header>
+
+    <div>
+        @RenderBody() <!-- Conteúdo de cada página que se diferencia -->
+    </div>
+
+    <footer>
+        Footer Comum <!-- Layouts repetidos -->
+    </footer>
+
 </body>
 </html>
