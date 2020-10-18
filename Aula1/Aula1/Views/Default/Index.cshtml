@@ -1,8 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 @section estilos {
     <style>
@@ -12,7 +12,12 @@
     </style>
 }
 
-<!-- Conteúdo que entra no RenderBody() do _Layout -->
-<h1>Default Index</h1>
-<div>CORPO Default</div>
+@section javascript {
+    <script>
+        //JS
+    </script>
+}
 
+<h1>Index</h1>
+
+<div>parte que vai mudar no layout</div>
