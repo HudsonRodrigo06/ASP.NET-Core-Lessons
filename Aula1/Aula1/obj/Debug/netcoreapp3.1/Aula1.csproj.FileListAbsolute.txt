@@ -390,3 +390,4 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.csproj.Cor
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Default\Index.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutSimples.cshtml.g.cs
