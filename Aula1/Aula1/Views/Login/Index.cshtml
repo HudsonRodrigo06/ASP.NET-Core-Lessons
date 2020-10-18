@@ -10,11 +10,11 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Inicie aqui</p>
+            <p class="login-box-msg">Inicie por aqui</p>
 
-            <form>
+            <form method="post" action="/Login/Logar">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                    <input type="text" class="form-control" name="Email" placeholder="Usuario">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Senha">
+                    <input type="password" class="form-control" name="Senha" placeholder="Senha">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -43,12 +43,6 @@
 
             
 
-            <p class="mb-1">
-                <a href="forgot-password.html">Esqueceu a senha?</a>
-            </p>
-            <p class="mb-0">
-                <a href="register.html" class="text-center">Cadastrar</a>
-            </p>
         </div>
         <!-- /.login-card-body -->
     </div>

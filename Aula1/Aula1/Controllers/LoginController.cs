@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aula1.Controllers
@@ -13,16 +14,9 @@ namespace Aula1.Controllers
 			return View();
 		}
 
-		public IActionResult Logar(string usuario, string senha)
+		public IActionResult Logar(Usuario usuario)
 		{
-			if(usuario == "adm" && senha == "123")
-			{
-
-			}
-			else
-			{
-				ViewBag.ErrorLogin = "Dados inválidos";
-			}
+			
 
 
 
