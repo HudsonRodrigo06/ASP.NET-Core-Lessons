@@ -151,37 +151,56 @@
 <div class="container-fluid">
     <div class="row">
         <!-- left column -->
-        <div class="col-lg-12">
+        <div class="col-lg-12" >
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Cadastrar Produto</h3>
+                    
+                    <h3 class="card-title">Cadastrar Produto  </h3> <a href="/Produto"><img src="~/images/icons/arrow-circle-left-solid.svg" width="20px" height="20px" style="position:absolute; margin-left:10px; right:18px" /> </a>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form role="form">
-                    <div class="card-body" style="width: 28rem;">
+                    <div class="card-body" style="width: 22rem;">
                         <div class="form-group">
                             <label for="">Nome</label>
                             <input type="text" class="form-control" id="" name="Nome" placeholder="Nome do produto">
                         </div>
 
                         <div class="form-group">
-                            <label>Categoria <a href="/Categoria/Cadastrar"><img src="~/images/icons/plus-square-solid.svg" width="20px" height="20px" style="position:absolute; right:20px;" /></a></label>
-                            <select class="form-control select2" style="width: 100%;">
+                            <label>Categoria <a href="/Categoria/Cadastrar"><img src="~/images/icons/plus-square-solid.svg" width="20px" height="20px" style="position:absolute; margin-left:10px; margin-top: 3px;" /></a></label>
+                            <select class="form-control select2" style="width: 100%;" name="Categoria">
                                 <option selected="selected">Calçados</option>
                                 <option>Eletrônicos</option>
                                 <option>Móveis</option>
                             </select>
+
                         </div>
 
                         <div class="form-group">
-                            <label for="">(R$) Valor Compra</label>
-                            <input type="text" class="form-control" id="" placeholder="1000">
+                            <label for="">($) Valor Compra</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="">(R$) Valor Venda</label>
-                            <input type="text" class="form-control" id="" placeholder="2000">
+                            <label for="">($) Valor Venda</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -190,8 +209,10 @@
                     </div>
                     <!-- /.card-body -->
 
+                    
+
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-primary btn-sm float-right" id="right" " >Adicionar</input>
                     </div>
                 </form>
             </div>
@@ -204,3 +225,64 @@
     </div>
     <!-- /.row -->
 </div><!-- /.container-fluid -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Produtos Cadastrados</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Preço Compra</th>
+                                <th>Preço Venda</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tenis Nike Air Pro</td>
+                                <td>
+                                    Calçados
+                                </td>
+                                <td>380,00</td>
+                                <td> 480,00</td>
+                                <td>
+                                    <a href="/Produto/Editar">
+                                        <img src="~/images/icons/edit-solid.svg" width="20px" height="20px" />
+                                    </a>
+                                    <a href="/Produto/Remover">
+                                        <img src="~/images/icons/trash-alt-solid.svg" width="20px" height="20px" style="margin-left: 10px;" />
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Preço Compra</th>
+                                <th>Preço Venda</th>
+                                <th>Ação</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->

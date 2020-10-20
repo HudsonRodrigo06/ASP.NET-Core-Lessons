@@ -12,7 +12,8 @@ namespace Aula1.Models
 
 		public Categoria()
 		{
-
+			_id = -1;
+			_nome = "";
 		}
 
 		public Categoria(int id, string nome)
