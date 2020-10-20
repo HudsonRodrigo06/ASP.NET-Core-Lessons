@@ -3,6 +3,15 @@
     Layout = "~/Views/Shared/_LayoutSimples.cshtml";
 }
 
+@section estilos {
+
+}
+
+@section javascript {
+
+    <script src="~/js/Views/Login/Index.js"></script>
+}
+
 <div class="login-box">
     <div class="login-logo">
         <a href="#"><b>Autentic</b>ação</a>
@@ -31,17 +40,17 @@
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        
+
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                        <input type="button" class="btn btn-primary btn-block" value="Entrar" />
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            
+
 
         </div>
         <!-- /.login-card-body -->
