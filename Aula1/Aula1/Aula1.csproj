@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\css\Views\Login\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
