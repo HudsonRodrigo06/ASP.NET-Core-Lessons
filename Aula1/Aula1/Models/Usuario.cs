@@ -8,29 +8,43 @@ namespace Aula1.Models
 {
 	public class Usuario
 	{
-		int id;
-		string nome;
-		string email;
-		string senha;
+		int _id;
+		string _nome;
+		string _email;
+		string _senha;
+
+		public int Id { get => _id; set => _id = value; }
+		public string Nome { get => _nome; set => _nome = value; }
+		public string Email { get => _email; set => _email = value; }
+		public string Senha { get => _senha; set => _senha = value; }
 
 		public Usuario()
 		{
-			this.Id = -1;
-			this.Nome = this.Email = this.Senha = "";
+			Id = -1;
+			Nome = Email = Senha = "";
 		}
 
 		public Usuario(int id, string nome, string email, string senha)
 		{
-			this.Id = id;
-			this.Nome = nome;
-			this.Email = email;
-			this.Senha = senha;
+			Id = id;
+			Nome = nome;
+			Email = email;
+			Senha = senha;
 		}
 
-		public int Id { get => id; set => id = value; }
-		public string Nome { get => nome; set => nome = value; }
-		public string Email { get => email; set => email = value; }
-		public string Senha { get => senha; set => senha = value; }
+
+
+		public bool ValidarSenha(string email, string senha)
+		{
+			return email.Equals(email) && senha.Equals("123");
+		}
+
+		public bool Gravar()
+		{
+
+			return true;
+		}
+
 
 
 	}

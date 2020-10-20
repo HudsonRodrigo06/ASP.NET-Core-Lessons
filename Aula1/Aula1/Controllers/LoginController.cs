@@ -17,7 +17,10 @@ namespace Aula1.Controllers
 		public IActionResult Logar(Usuario usuario)
 		{
 			
+			if(usuario.Nome == "adm" && usuario.Senha == "123")
+			{
 
+			}
 
 
 			return View("Index");
