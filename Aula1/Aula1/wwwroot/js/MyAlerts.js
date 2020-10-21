@@ -1,5 +1,6 @@
 ﻿let myalert = {
 
+	// mensagem de erro
 	errorMsg: function (msg) {
 		Swal.fire({
 			icon: 'error',
@@ -8,7 +9,7 @@
 		})
 	},
 
-	// mensagem e href de redirecionamento, exemplo: login -> default: rediect = "default"
+	// mensagem de sucesso com redirect
 	sucessMsg: function (msg, redirect) {
 		Swal.fire(
 			'Good job!',
@@ -20,6 +21,7 @@
 
 	},
 
+	// apenas mensagem de sucesso
 	onlySucessMsg: function (msg) {
 		Swal.fire(
 			'Good job!',

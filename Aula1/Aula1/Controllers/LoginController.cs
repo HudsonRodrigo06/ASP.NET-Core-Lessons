@@ -21,8 +21,8 @@ namespace Aula1.Controllers
 			user.Senha = dados.GetProperty("Senha").ToString();
 
 			//retorna objeto anonimo C#
-			return Json(new 
-			{ 
+			return Json(new
+			{
 				operacao = user.ValidarSenha()
 			});
 

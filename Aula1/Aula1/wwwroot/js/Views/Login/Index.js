@@ -25,13 +25,13 @@ let index = {
 
 			HTTPClient.post("Login/Logar", dados)
 				.then(function (retornoServidor) {
-					
+
 					return retornoServidor.json(); 
 
 				})
 				.then(function (objJson) {
 
-					
+
 					if (objJson.operacao)
 					{
 						myalert.sucessMsg("Login efetuado com sucesso!", "default");
