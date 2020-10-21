@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aula1.Controllers
@@ -15,8 +16,41 @@ namespace Aula1.Controllers
 
 
 		public IActionResult Cadastrar()
-		{
+		{	
+			
 			return View();
+		}
+
+		public IActionResult Gravar([FromBody] System.Text.Json.JsonElement dados)
+		{
+			string msg = "";
+			bool operacao = false;
+			Produto prod = new Produto();
+
+			try
+			{
+				prod.Nome = dados.GetProperty("Nome").ToString();
+				prod.Categoria = new Categoria(dados.GetProperty("Categoria").ToString());
+				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
+				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
+
+				operacao = true;
+				msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
+
+			}
+			catch (Exception ex)
+			{
+				msg = "[Produto/Cadastrar]: " + ex.Message;
+			}
+
+
+
+			return Json(new
+			{
+				operacao = operacao,
+				msg = msg
+
+			});
 		}
 
 

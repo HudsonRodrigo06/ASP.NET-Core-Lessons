@@ -34,9 +34,9 @@ namespace Aula1.Models
 
 
 
-		public bool ValidarSenha(string email, string senha)
+		public bool ValidarSenha()
 		{
-			return email.Equals(email) && senha.Equals("123");
+			return _email.Equals("hud") && _senha.Equals("123");
 		}
 
 		public bool Gravar()

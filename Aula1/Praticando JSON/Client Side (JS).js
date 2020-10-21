@@ -53,9 +53,9 @@ var index = {
 				return retornoServidor.json();
 
 			})
-			.then(function () {
-				if (retornoServidor.caraio)
-					alert(retornoServidor.msg);
+			.then(function (objJson) {
+				if (objJson.caraio)
+					alert(objJson.msg);
 			})
 			.catch(function () {
 				alert("erro");

@@ -14,23 +14,16 @@ namespace Aula1.Controllers
 			return View();
 		}
 
-		public IActionResult Logar( [FromBody] Usuario usuario)
+		public IActionResult Logar( [FromBody] System.Text.Json.JsonElement dados)
 		{
+			Usuario user = new Usuario();
+			user.Email = dados.GetProperty("Email").ToString();
+			user.Senha = dados.GetProperty("Senha").ToString();
 
-			int.Parse("adsasgadfg");
-			
-			if(usuario.Nome == "adm" && usuario.Senha == "123")
-			{
-				//redirect
-			}
-
-
-			//return View("Index");
-
+			//retorna objeto anonimo C#
 			return Json(new 
 			{ 
-				operacao = true,
-				msg = "funfou"
+				operacao = user.ValidarSenha()
 			});
 
 		}

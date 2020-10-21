@@ -2,75 +2,78 @@
 // objeto JS 
 // objeto literal: que não nasce da instancia de uma classe
 
-//import { localeData } from "../../../template/plugins/moment/moment-with-locales";
-
 // utilizando objeto como contexto para proteger
 let index = {
-
-	errorMsg: function () {
-		Swal.fire({
-			icon: 'error',
-			title: 'Oops...',
-			text: 'Dados inválidos!'
-		})
-	},
-
-	sucessMsg: function () {
-		Swal.fire(
-			'Good job!',
-			'Login efetuado com sucesso!',
-			'success'
-
-		)
-	},
 
 	logar: function () {
 
 		var email = document.getElementById("email");
 		var senha = document.getElementById("senha");
-		
 
 		if (email.value.trim() == "" || senha.value.trim() == "") {
-			this.errorMsg();
+			myalert.errorMsg("Todos os campos devem ser preenchidos!");
 		}
 		else {
 
 			// AJAX - Fetch API
 			// fetch("controller/action", config);
 
-			// configura dados a enviar pro servidor (request)
-			let config = {
-				method: "POST",
-				body: JSON.stringify({
-					Email: email.value,
-					Senha: senha.value
-				}),
-				headers: {
-					"Content-Type": "application/json"
-				}
+			dados = {
+				Email: email.value,
+				Senha: senha.value
 			}
 
-			//função que envia os dados e recebe o retorno (response)
-			fetch("Login/Logar", config) 
+			HTTPClient.post("Login/Logar", dados)
 				.then(function (retornoServidor) {
-					// pega o json string retornado do servidor e transforma em objeto literal
+					
 					return retornoServidor.json(); 
 
 				})
 				.then(function (objJson) {
 
 					
-
-					this.sucessMsg();
+					if (objJson.operacao)
+					{
+						myalert.sucessMsg("Login efetuado com sucesso!", "default");
+					}
+					else
+						myalert.errorMsg("Login inválido");
+					
 
 				})
 				.catch(function () {
 
-					alert("um erro ocorreu");
+					myalert.errorMsg("[POST]: Houve algum erro de consistência.");
 
 				})
 
+			
 
+			//var url = "Login/Logar?Email='" + dados.Email + "'&Senha='" + dados.Senha + "'";
+
+			//HTTPClient.get(url)
+			//	.then(function (retornoServidor) {
+
+			//		return retornoServidor.json();
+
+			//	})
+			//	.then(function (objJson) {
+
+
+			//		if (objJson.operacao) {
+			//			index.sucessMsg("Login efetuado com sucesso!");
+
+			//		}
+
+
+			//	})
+			//	.catch(function () {
+
+			//		index.errorMsg("[GET]: Houve algum erro de consistência.");
+
+			//	})
+
+			
 
 			
 		}
