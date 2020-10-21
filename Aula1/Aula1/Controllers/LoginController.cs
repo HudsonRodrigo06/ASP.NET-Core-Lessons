@@ -14,8 +14,10 @@ namespace Aula1.Controllers
 			return View();
 		}
 
-		public IActionResult Logar(Usuario usuario)
+		public IActionResult Logar( [FromBody] Usuario usuario)
 		{
+
+			int.Parse("adsasgadfg");
 			
 			if(usuario.Nome == "adm" && usuario.Senha == "123")
 			{
@@ -23,7 +25,14 @@ namespace Aula1.Controllers
 			}
 
 
-			return View("Index");
+			//return View("Index");
+
+			return Json(new 
+			{ 
+				operacao = true,
+				msg = "funfou"
+			});
+
 		}
 	}
 }
