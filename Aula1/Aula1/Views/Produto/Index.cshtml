@@ -18,24 +18,11 @@
     <script src="~/template/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/template/dist/js/demo.js"></script>
+
     <!-- page script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+
+    <script src="~/js/Views/Produto/Index.js"></script>
+
 }
 
 @section estilos {
@@ -58,8 +45,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                
-                
+
+
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Gerenciar Produtos  <a href="/Produto/Cadastrar"><img src="~/images/icons/plus-square-solid.svg" width="20px" height="20px" style="position:absolute; right:20px;" /></a></h3>
@@ -93,7 +80,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                             <tfoot>
                                 <tr>
