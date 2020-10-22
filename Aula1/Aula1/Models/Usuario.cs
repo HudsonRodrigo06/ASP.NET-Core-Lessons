@@ -35,9 +35,11 @@ namespace Aula1.Models
 
 
 
-		public bool ValidarSenha()
+		public bool ValidarLogin()
 		{
-			return _email.Equals("hud") && _senha.Equals("123");
+			UsuarioDAL ud = new UsuarioDAL();
+
+			return ud.Existe(this) > 0;
 		}
 
 		public int Gravar()

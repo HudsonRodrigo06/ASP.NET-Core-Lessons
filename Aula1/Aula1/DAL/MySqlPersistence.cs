@@ -40,6 +40,7 @@ namespace Aula1.DAL
 		public int ExecuteNonQuery(string sql, Dictionary<string, object> parametros = null)
 		{
 			Abrir();
+
 			_cmd.CommandText = sql;
 
 			if(parametros != null)
@@ -50,6 +51,7 @@ namespace Aula1.DAL
 
 			int linhasAfetadas = _cmd.ExecuteNonQuery();
 			_ultimoId = (int)_cmd.LastInsertedId;
+
 			Fechar();
 
 			return linhasAfetadas;

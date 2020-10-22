@@ -23,7 +23,7 @@ namespace Aula1.Controllers
 			//retorna objeto anonimo C#
 			return Json(new
 			{
-				operacao = user.ValidarSenha()
+				operacao = user.ValidarLogin()
 			});
 
 		}
