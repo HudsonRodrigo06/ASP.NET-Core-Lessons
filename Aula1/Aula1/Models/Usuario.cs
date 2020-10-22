@@ -39,7 +39,7 @@ namespace Aula1.Models
 		{
 			UsuarioDAL ud = new UsuarioDAL();
 
-			return ud.Existe(this) > 0;
+			return ud.Existe(this);
 		}
 
 		public int Gravar()

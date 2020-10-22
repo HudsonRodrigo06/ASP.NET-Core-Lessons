@@ -28,3 +28,22 @@
 		return p;
 	}
 }
+
+
+
+
+let HTTPClient = {
+
+	post: function (url, obj) {
+
+		let config = {
+			method : "post",
+			body : JSON.stringify({ obj }),
+			headers: {
+				"Content-Type": "application-json"
+			}
+		}
+
+		return fetch(url, config);
+	}
+}

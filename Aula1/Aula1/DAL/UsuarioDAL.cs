@@ -1,4 +1,5 @@
 ﻿using Aula1.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,18 +27,18 @@ namespace Aula1.DAL
 			return _bd.ExecuteNonQuery(sql, parametros);
 		}
 
-		public int Existe(Usuario usuario)
+		public bool Existe(Usuario usuario)
 		{
 			string sql =
 
-				@"SELECT * FROM usuario WHERE Email = `@Email` AND Senha = `@Senha`";
+				@"SELECT * FROM usuario WHERE Email = @Email AND Senha = @Senha";
 
 			Dictionary<string, object> parametros = new Dictionary<string, object>();
 
 			parametros.Add("@Email", usuario.Email);
 			parametros.Add("@Senha", usuario.Senha);
 
-			return _bd.ExecuteNonQuery(sql, parametros);
+			return _bd.ExecuteQuery(sql, parametros) > 0;
 		}
 
 

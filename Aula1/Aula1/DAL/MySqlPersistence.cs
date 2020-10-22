@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Aula1.Models;
 using MySql.Data.MySqlClient;
 
 namespace Aula1.DAL
@@ -47,6 +49,33 @@ namespace Aula1.DAL
 				foreach (var p in parametros)
 				{
 					_cmd.Parameters.AddWithValue(p.Key, p.Value);
+				}
+
+
+			int linhasAfetadas = _cmd.ExecuteNonQuery();
+			_ultimoId = (int)_cmd.LastInsertedId;
+
+			Fechar();
+
+			return linhasAfetadas;
+		}
+
+		/// <summary>
+		/// Executa Consultas SELECT
+		/// </summary>
+		/// <param name="sql">Comando SQL</param>
+		/// <param name="parametros">Chave para substituir e Valor ex: ("@Email", "a@a.com")</param>
+		/// <returns>Quantidade de linhas afetadas</returns>
+		public int ExecuteQuery(string sql, Dictionary<string, object> parametros = null)
+		{
+			Abrir();
+
+			_cmd.CommandText = sql;
+
+			if (parametros != null)
+				foreach (var p in parametros)
+				{
+					_cmd.Parameters.AddWithValue(p.Key, p.Value); // <-- AQUI PARECE NAO ESTAR SUBSTITUINDO
 				}
 
 
