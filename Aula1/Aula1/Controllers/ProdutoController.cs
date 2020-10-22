@@ -34,8 +34,13 @@ namespace Aula1.Controllers
 				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
 				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
 
-				operacao = true;
-				msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
+				if (prod.Gravar() > 0)
+				{
+					operacao = true;
+					msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
+				}
+				else
+					msg = "Houve algum problema ao gravar " + prod.Nome + " no Banco de Dados.";
 
 			}
 			catch (Exception ex)

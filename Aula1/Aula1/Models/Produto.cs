@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aula1.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,5 +42,13 @@ namespace Aula1.Models
 		public Categoria Categoria { get => _categoria; set => _categoria = value; }
 		public decimal PrecoCompra { get => _precoCompra; set => _precoCompra = value; }
 		public decimal PrecoVenda { get => _precoVenda; set => _precoVenda = value; }
+
+
+		public int Gravar()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+
+			return pd.Gravar(this);
+		}
 	}
 }

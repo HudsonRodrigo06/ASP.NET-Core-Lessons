@@ -48,11 +48,11 @@ namespace Aula1.DAL
 					_cmd.Parameters.AddWithValue(p.Key, p.Value);
 				}
 
-			int linhas = _cmd.ExecuteNonQuery();
+			int linhasAfetadas = _cmd.ExecuteNonQuery();
 			_ultimoId = (int)_cmd.LastInsertedId;
 			Fechar();
 
-			return linhas;
+			return linhasAfetadas;
 		}
 
 	}
