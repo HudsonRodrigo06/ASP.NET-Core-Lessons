@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Aula1.DAL;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,12 @@ namespace Aula1.Models
 			return _email.Equals("hud") && _senha.Equals("123");
 		}
 
-		public bool Gravar()
+		public int Gravar()
 		{
-
-			return true;
+			UsuarioDAL ud = new UsuarioDAL();
+			
+			return ud.Gravar(this);
 		}
-
-
 
 	}
 }
