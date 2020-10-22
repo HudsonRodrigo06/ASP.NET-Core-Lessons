@@ -30,8 +30,7 @@ namespace Aula1.DAL
 		{
 			string sql =
 
-				@"SELECT * FROM usuario
-					WHERE Email = @Email AND Senha = @Senha";
+				@"SELECT * FROM usuario WHERE Email = `@Email` AND Senha = `@Senha`";
 
 			Dictionary<string, object> parametros = new Dictionary<string, object>();
 
