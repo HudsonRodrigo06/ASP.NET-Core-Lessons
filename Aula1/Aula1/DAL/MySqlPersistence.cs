@@ -77,13 +77,14 @@ namespace Aula1.DAL
 				foreach (var p in parametros)
 				{
 					_cmd.Parameters.AddWithValue(p.Key, p.Value);
+					//Console.WriteLine(p.Key + "-" + p.Value);
 				}
 
 			MySqlDataReader reader = _cmd.ExecuteReader();
 
 			existe = reader.HasRows;
 
-			//Console.WriteLine(_cmd.CommandText);
+			///Console.WriteLine(_cmd.CommandText);
 			
 			reader.Close();
 			Fechar();
