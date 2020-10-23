@@ -38,7 +38,7 @@ namespace Aula1.DAL
 			parametros.Add("@Email", usuario.Email);
 			parametros.Add("@Senha", usuario.Senha);
 
-			return _bd.ExecuteQuery(sql, parametros) > 0;
+			return _bd.ExisteUsuario(sql, parametros);
 		}
 
 

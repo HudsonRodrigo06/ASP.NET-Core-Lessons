@@ -66,25 +66,57 @@ namespace Aula1.DAL
 		/// <param name="sql">Comando SQL</param>
 		/// <param name="parametros">Chave para substituir e Valor ex: ("@Email", "a@a.com")</param>
 		/// <returns>Quantidade de linhas afetadas</returns>
-		public int ExecuteQuery(string sql, Dictionary<string, object> parametros = null)
+		public bool ExisteUsuario(string sql, Dictionary<string, object> parametros = null)
 		{
 			Abrir();
 
 			_cmd.CommandText = sql;
+			bool existe = false;
 
 			if (parametros != null)
 				foreach (var p in parametros)
 				{
-					_cmd.Parameters.AddWithValue(p.Key, p.Value); // <-- AQUI PARECE NAO ESTAR SUBSTITUINDO
+					_cmd.Parameters.AddWithValue(p.Key, p.Value);
 				}
 
+			MySqlDataReader reader = _cmd.ExecuteReader();
 
-			int linhasAfetadas = _cmd.ExecuteNonQuery();
-			_ultimoId = (int)_cmd.LastInsertedId;
+			existe = reader.HasRows;
 
+			//Console.WriteLine(_cmd.CommandText);
+			
+			reader.Close();
 			Fechar();
 
-			return linhasAfetadas;
+			return existe;
+		}
+
+
+		public List<Produto> getProdutos(string sql)
+		{
+			List<Produto> produtos = new List<Produto>();
+			Abrir();
+
+			_cmd.CommandText = sql;
+
+			MySqlDataReader reader = _cmd.ExecuteReader();
+
+			while (reader.Read())
+			{   // ProdutoId, p.Nome AS NomeProd, c.Nome AS NomeCat, vCompra, vVenda, p.CategoriaId
+
+				Categoria cat = new Categoria( (int)reader["p.CategoriaId"], (string)reader["NomeCat"] );
+
+				produtos.Add(
+					new Produto( (int)reader["ProdutoId"], (string)reader["Nome"], 
+						cat, (decimal)reader["vCompra"], (decimal)reader["vVenda"])
+				);
+			}
+
+			reader.Close();
+			Fechar();
+
+			return produtos;
+
 		}
 
 	}

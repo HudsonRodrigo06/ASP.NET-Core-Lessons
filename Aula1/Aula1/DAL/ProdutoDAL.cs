@@ -10,7 +10,7 @@ namespace Aula1.DAL
 	{
 		MySqlPersistence _bd = new MySqlPersistence();
 
-		public int Gravar(Produto prod)
+		public bool Gravar(Produto prod)
 		{
 			// Mapeamento Objeto-Relacional --> transformar objeto em linha de tabela do banco
 			string sql =
@@ -24,7 +24,30 @@ namespace Aula1.DAL
 			parametros.Add("@vCompra", prod.PrecoCompra);
 			parametros.Add("@vVenda", prod.PrecoVenda);
 
-			return _bd.ExecuteNonQuery(sql, parametros);
+			return _bd.ExecuteNonQuery(sql, parametros) > 0;
+		}
+
+
+		
+		 
+			
+		/// <summary>
+		/// Retorna todos os produtos da base de dados
+		/// </summary>
+		/// <returns></returns>
+		public List<Produto> getProdutos()
+		{
+			string sql =
+					@"select 
+						ProdutoId, p.Nome AS NomeProd, c.Nome AS NomeCat, vCompra, vVenda, p.CategoriaId 
+					  from 
+						produto p 
+					  JOIN 
+						categoria c 
+					  ON 
+						p.CategoriaId = c.CategoriaId";
+
+			return _bd.getProdutos(sql);
 		}
 	}
 }

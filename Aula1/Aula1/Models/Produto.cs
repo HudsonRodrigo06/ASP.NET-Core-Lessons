@@ -44,11 +44,18 @@ namespace Aula1.Models
 		public decimal PrecoVenda { get => _precoVenda; set => _precoVenda = value; }
 
 
-		public int Gravar()
+		public bool Gravar()
 		{
 			ProdutoDAL pd = new ProdutoDAL();
 
 			return pd.Gravar(this);
 		}
+
+		public List<Produto> getProdutos()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+			return pd.getProdutos();
+		}
+
 	}
 }

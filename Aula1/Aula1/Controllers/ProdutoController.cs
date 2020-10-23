@@ -34,7 +34,7 @@ namespace Aula1.Controllers
 				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
 				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
 
-				if (prod.Gravar() > 0)
+				if (prod.Gravar())
 				{
 					operacao = true;
 					msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
