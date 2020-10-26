@@ -11,7 +11,7 @@ namespace Aula1.DAL
 	{
 		MySqlPersistence _bd = new MySqlPersistence();
 
-		public int Gravar(Usuario usuario)
+		public bool Gravar(Usuario usuario)
 		{
 			// Mapeamento Objeto-Relacional --> transformar objeto em linha de tabela do banco
 			string sql =
@@ -24,10 +24,43 @@ namespace Aula1.DAL
 			parametros.Add("@Email", usuario.Email);
 			parametros.Add("@Senha", usuario.Senha);
 
-			return _bd.ExecuteNonQuery(sql, parametros);
+			return _bd.ExecuteNonQuery(sql, parametros) > 0;
 		}
 
-		public bool Existe(Usuario usuario)
+		public bool getUsuario(int id, Usuario usr)
+		{
+			string sql =
+
+				 $"SELECT * FROM usuario WHERE UsuarioId = {id}";
+
+
+			try
+			{
+				MySqlDataReader dr = _bd.ExecuteQuery(sql);
+				dr.Read();
+
+				if (dr.HasRows)
+				{
+					usr.Id = Convert.ToInt32(dr["UsuarioId"]);
+					usr.Nome = Convert.ToString(dr["Nome"]);
+					usr.Email = Convert.ToString(dr["Email"]);
+					usr.Senha = Convert.ToString(dr["Senha"]);
+
+					return true;
+				}
+				return false;
+			}
+			catch(Exception ex)
+			{
+				return false;
+			}
+			finally
+			{
+				_bd.Fechar();
+			}
+		}
+
+		public bool ValidarUsuario(Usuario usuario)
 		{
 			string sql =
 
@@ -38,7 +71,9 @@ namespace Aula1.DAL
 			parametros.Add("@Email", usuario.Email);
 			parametros.Add("@Senha", usuario.Senha);
 
-			return _bd.ExisteUsuario(sql, parametros);
+			object dados = _bd.ExecuteQueryScalar(sql, parametros);
+
+			return (dados != null && Convert.ToInt32(dados) > 0);
 		}
 
 

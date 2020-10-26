@@ -14,13 +14,13 @@ namespace Aula1.DAL
 		{
 			// Mapeamento Objeto-Relacional --> transformar objeto em linha de tabela do banco
 			string sql =
-				@"insert usuario (Nome, Categoria, vCompra, vVenda) 
-					values (@Nome, @Categoria, @vCompra, @vVenda)";
+				@"insert into produto (Nome, CategoriaId, vCompra, vVenda) 
+					values (@Nome, @CategoriaId, @vCompra, @vVenda)";
 
 			Dictionary<string, object> parametros = new Dictionary<string, object>();
 
 			parametros.Add("@Nome", prod.Nome);
-			parametros.Add("@Categoria", prod.Categoria.Id);
+			parametros.Add("@CategoriaId", prod.Categoria.Id);
 			parametros.Add("@vCompra", prod.PrecoCompra);
 			parametros.Add("@vVenda", prod.PrecoVenda);
 

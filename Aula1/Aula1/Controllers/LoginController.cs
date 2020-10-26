@@ -20,7 +20,7 @@ namespace Aula1.Controllers
 			user.Email = dados.GetProperty("Email").ToString();
 			user.Senha = dados.GetProperty("Senha").ToString();
 
-			//retorna objeto anonimo C#
+			//retorna objeto anonimo
 			return Json(new
 			{
 				operacao = user.ValidarLogin()

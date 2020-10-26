@@ -1,5 +1,6 @@
 ﻿using Aula1.DAL;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,16 +34,21 @@ namespace Aula1.Models
 			Senha = senha;
 		}
 
+		public bool getUsuario(int id)
+		{
+			UsuarioDAL ud = new UsuarioDAL();
 
+			return ud.getUsuario(id, this);
+		}
 
 		public bool ValidarLogin()
 		{
 			UsuarioDAL ud = new UsuarioDAL();
 
-			return ud.Existe(this);
+			return ud.ValidarUsuario(this);
 		}
 
-		public int Gravar()
+		public bool Gravar()
 		{
 			UsuarioDAL ud = new UsuarioDAL();
 			

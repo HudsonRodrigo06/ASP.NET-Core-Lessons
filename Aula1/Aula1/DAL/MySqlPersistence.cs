@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,38 +61,44 @@ namespace Aula1.DAL
 			return linhasAfetadas;
 		}
 
-		/// <summary>
-		/// Executa Consultas SELECT
-		/// </summary>
-		/// <param name="sql">Comando SQL</param>
-		/// <param name="parametros">Chave para substituir e Valor ex: ("@Email", "a@a.com")</param>
-		/// <returns>Quantidade de linhas afetadas</returns>
-		public bool ExisteUsuario(string sql, Dictionary<string, object> parametros = null)
+		public object ExecuteQueryScalar(string sql, Dictionary<string, object> parametros = null)
 		{
 			Abrir();
 
 			_cmd.CommandText = sql;
-			bool existe = false;
 
 			if (parametros != null)
 				foreach (var p in parametros)
 				{
 					_cmd.Parameters.AddWithValue(p.Key, p.Value);
-					//Console.WriteLine(p.Key + "-" + p.Value);
 				}
 
-			MySqlDataReader reader = _cmd.ExecuteReader();
 
-			existe = reader.HasRows;
+			object retorno = _cmd.ExecuteScalar();
 
-			///Console.WriteLine(_cmd.CommandText);
-			
-			reader.Close();
 			Fechar();
 
-			return existe;
+			return retorno;
 		}
 
+		public MySqlDataReader ExecuteQuery(string sql, Dictionary<string, object> parametros = null)
+		{
+			Abrir();
+
+			_cmd.CommandText = sql;
+
+			if (parametros != null)
+				foreach (var p in parametros)
+				{
+					_cmd.Parameters.AddWithValue(p.Key, p.Value);
+				}
+
+			MySqlDataReader leitor = _cmd.ExecuteReader();
+
+			//Fechar();
+
+			return leitor;
+		}
 
 		public List<Produto> getProdutos(string sql)
 		{

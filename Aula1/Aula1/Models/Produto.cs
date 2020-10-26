@@ -19,6 +19,14 @@ namespace Aula1.Models
 
 		}
 
+		public Produto(string nome, Categoria categoria, decimal precoCompra, decimal precoVenda)
+		{
+			_nome = nome;
+			_categoria = categoria;
+			_precoCompra = precoCompra;
+			_precoVenda = precoVenda;
+		}
+
 		public Produto(int id, string nome, Categoria categoria, decimal precoCompra, decimal precoVenda)
 		{
 			Id = id;

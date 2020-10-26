@@ -29,8 +29,10 @@ namespace Aula1.Controllers
 
 			try
 			{
+				int catId = Convert.ToInt32(dados.GetProperty("catId").ToString());
+				
 				prod.Nome = dados.GetProperty("Nome").ToString();
-				prod.Categoria = new Categoria(dados.GetProperty("Categoria").ToString());
+				prod.Categoria = new Categoria(catId, dados.GetProperty("Categoria").ToString());
 				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
 				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
 

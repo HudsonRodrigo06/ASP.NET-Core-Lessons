@@ -4,15 +4,23 @@ let cadastrar = {
 
 	gravar: function () {
 
+
+		var select = document.getElementById("Categoria");
+
 		var nome = document.getElementById("Nome").value;
-		var cat = document.getElementById("Categoria").value;
+		var catid = select.value;
+		var cat = select.options[select.selectedIndex].text;
 		var vcompra = document.getElementById("vCompra").value;
 		var vvenda = document.getElementById("vVenda").value;
+
+
+		alert(document.getElementById("Categoria").innerHTML);
 
 		//**** add masks
 		
 		dados = {
 			Nome: nome,
+			catId: catid,
 			Categoria: cat,
 			vCompra: vcompra,
 			vVenda: vvenda
