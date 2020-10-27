@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace Aula1.DAL
 
 		public MySqlPersistence()
 		{
-			_conexao = new MySqlConnection("Server=den1.mysql5.gear.host;Database=lojavirtual1;Uid=lojavirtual1;Pwd=$123456;");
+			string StrCon = Environment.GetEnvironmentVariable("STR_CON");
+
+			_conexao = new MySqlConnection(StrCon);
 			_cmd = _conexao.CreateCommand();
 
 		}
@@ -81,7 +84,7 @@ namespace Aula1.DAL
 			return retorno;
 		}
 
-		public MySqlDataReader ExecuteQuery(string sql, Dictionary<string, object> parametros = null)
+		public DbDataReader ExecuteQuery(string sql, Dictionary<string, object> parametros = null)
 		{
 			Abrir();
 

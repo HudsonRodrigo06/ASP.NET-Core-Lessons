@@ -3,12 +3,19 @@ using Aula1.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using NuGet.Frameworks;
 
 namespace Aula1.Models.Tests
 {
 	[TestClass()]
 	public class UsuarioTests
 	{
+
+		public UsuarioTests()
+		{
+			Environment.SetEnvironmentVariable("STR_CON", "Server=den1.mysql5.gear.host;Database=lojavirtual1;Uid=lojavirtual1;Pwd=$123456;");
+		}
+
 		[TestMethod()]
 		public void GravarTest()
 		{
@@ -47,6 +54,17 @@ namespace Aula1.Models.Tests
 			bool ok = user.getUsuario(2);
 
 			Assert.IsTrue(ok);
+		}
+
+		[TestMethod()]
+		public void getUsuariosTest()
+		{
+			bool ok = false;
+			Usuario usr = new Usuario();
+
+			var list = usr.getUsuarios("hud");
+
+			Assert.IsTrue(list.Count > 0);
 		}
 	}
 }

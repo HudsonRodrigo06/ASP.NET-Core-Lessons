@@ -1,7 +1,9 @@
 ﻿using Aula1.Models;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Bcpg;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,28 +29,75 @@ namespace Aula1.DAL
 			return _bd.ExecuteNonQuery(sql, parametros) > 0;
 		}
 
+		public List<Usuario> getUsuarios(string nome)
+		{
+			_bd.Abrir();
+
+			List<Usuario> users = new List<Usuario>();
+			string sql = $@"select *
+							from usuario
+							where nome like @Nome";
+
+			Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+			parametros.Add("@Nome", "%" + nome + "%");
+
+			DbDataReader dr = _bd.ExecuteQuery(sql, parametros);
+
+			users = Map(dr);
+
+			_bd.Fechar();
+
+			return users;
+		}
+
+		/// <summary>
+		/// Coleta os dados de Usuarios e alimenta uma lista para o retorno
+		/// </summary>
+		/// <param name="dr">DataReader com dados</param>
+		/// <returns></returns>
+		private List<Usuario> Map(DbDataReader dr)
+		{
+			List<Usuario> users = new List<Usuario>();
+
+			if (dr.HasRows)
+			{
+				while (dr.Read())
+				{
+					Usuario usr = new Usuario();
+
+					usr.Id = Convert.ToInt32(dr["UsuarioId"]);
+					usr.Nome = Convert.ToString(dr["Nome"]);
+					usr.Email = Convert.ToString(dr["Email"]);
+					usr.Senha = Convert.ToString(dr["Senha"]);
+
+					users.Add(usr);
+				}
+			}
+
+			return users;
+		}
+
+		/// <summary>
+		/// Busca dados do usuario por Id e preenche no objeto Usuario passado por parâmetro
+		/// </summary>
+		/// <param name="id">Usuario Id</param>
+		/// <param name="usr">Objeto a ser preenchido</param>
+		/// <returns></returns>
 		public bool getUsuario(int id, Usuario usr)
 		{
 			string sql =
 
 				 $"SELECT * FROM usuario WHERE UsuarioId = {id}";
 
-
 			try
 			{
-				MySqlDataReader dr = _bd.ExecuteQuery(sql);
+				DbDataReader dr = _bd.ExecuteQuery(sql);
+				
 				dr.Read();
+				usr = Map(dr).First();
 
-				if (dr.HasRows)
-				{
-					usr.Id = Convert.ToInt32(dr["UsuarioId"]);
-					usr.Nome = Convert.ToString(dr["Nome"]);
-					usr.Email = Convert.ToString(dr["Email"]);
-					usr.Senha = Convert.ToString(dr["Senha"]);
-
-					return true;
-				}
-				return false;
+				return true;
 			}
 			catch(Exception ex)
 			{

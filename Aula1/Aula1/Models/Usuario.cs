@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +40,13 @@ namespace Aula1.Models
 			UsuarioDAL ud = new UsuarioDAL();
 
 			return ud.getUsuario(id, this);
+		}
+
+		public List<Usuario> getUsuarios(string nome)
+		{
+			UsuarioDAL ud = new UsuarioDAL();
+
+			return ud.getUsuarios(nome);
 		}
 
 		public bool ValidarLogin()
