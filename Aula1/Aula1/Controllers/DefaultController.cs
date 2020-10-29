@@ -13,10 +13,17 @@ namespace Aula1.Controllers
 			return View();
 		}
 
-		public IActionResult Portal()
+
+		public void AtribuirNome([FromBody] System.Text.Json.JsonElement dados)
 		{
-			return View();
+			string userName = dados.GetProperty("Nome").ToString();
+
+			if (userName != "")
+				ViewData["userName"] = userName;
+			else
+				ViewData["userName"] = "Bem vindo(a)";
 		}
+
 	}
 
 }

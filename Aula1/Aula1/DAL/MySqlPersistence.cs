@@ -12,19 +12,50 @@ namespace Aula1.DAL
 {
 	public class MySqlPersistence
 	{
-		public MySqlConnection _conexao { get; set; }
-		public MySqlCommand _cmd { get; set; }
+		MySqlConnection _conexao { get; set; }
+		MySqlCommand _cmd { get; set; }
+		MySqlTransaction _transacao { get; set; }
 
 		public int _ultimoId { get; set; }
+		
+		public bool _manterConexaoAberta = false;
 
 
-		public MySqlPersistence()
+		public MySqlPersistence(bool manterConexaoAberta = false)
 		{
 			string StrCon = Environment.GetEnvironmentVariable("STR_CON");
+			_manterConexaoAberta = manterConexaoAberta;
 
 			_conexao = new MySqlConnection(StrCon);
 			_cmd = _conexao.CreateCommand();
 
+		}
+
+		public void IniciarTransacao()
+		{
+			Abrir();
+			_transacao = _conexao.BeginTransaction();
+			_cmd.Transaction = _transacao;
+		}
+
+		public void TransacaoCommit()
+		{
+			if(_transacao != null)
+			{
+				_transacao.Commit();
+				_transacao.Dispose();
+				_transacao = null;
+			}
+		}
+
+		public void TransacaoRollback()
+		{
+			if (_transacao != null)
+			{
+				_transacao.Rollback();
+				_transacao.Dispose();
+				_transacao = null;
+			}
 		}
 
 		public void Abrir()
@@ -59,7 +90,8 @@ namespace Aula1.DAL
 			int linhasAfetadas = _cmd.ExecuteNonQuery();
 			_ultimoId = (int)_cmd.LastInsertedId;
 
-			Fechar();
+			if(!_manterConexaoAberta)
+				Fechar();
 
 			return linhasAfetadas;
 		}
@@ -79,7 +111,8 @@ namespace Aula1.DAL
 
 			object retorno = _cmd.ExecuteScalar();
 
-			Fechar();
+			//if (!_manterConexaoAberta)
+			//	Fechar();
 
 			return retorno;
 		}
@@ -98,37 +131,17 @@ namespace Aula1.DAL
 
 			MySqlDataReader leitor = _cmd.ExecuteReader();
 
-			//Fechar();
+			//if (!_manterConexaoAberta)
+				//Fechar();
 
 			return leitor;
 		}
 
-		public List<Produto> getProdutos(string sql)
+		public void limparParametros()
 		{
-			List<Produto> produtos = new List<Produto>();
-			Abrir();
-
-			_cmd.CommandText = sql;
-
-			MySqlDataReader reader = _cmd.ExecuteReader();
-
-			while (reader.Read())
-			{   // ProdutoId, p.Nome AS NomeProd, c.Nome AS NomeCat, vCompra, vVenda, p.CategoriaId
-
-				Categoria cat = new Categoria( (int)reader["p.CategoriaId"], (string)reader["NomeCat"] );
-
-				produtos.Add(
-					new Produto( (int)reader["ProdutoId"], (string)reader["Nome"], 
-						cat, (decimal)reader["vCompra"], (decimal)reader["vVenda"])
-				);
-			}
-
-			reader.Close();
-			Fechar();
-
-			return produtos;
-
+			_cmd.Parameters.Clear();
 		}
+		
 
 	}
 }

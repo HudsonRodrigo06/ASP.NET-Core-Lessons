@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aula1.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,13 @@ namespace Aula1.Models
 		{
 			Id = id;
 			Nome = nome;
+		}
+
+		public bool getCategoria(int id)
+		{
+			CategoriaDAL cd = new CategoriaDAL();
+
+			return cd.getCategoria(id, this);
 		}
 
 		public override string ToString() {

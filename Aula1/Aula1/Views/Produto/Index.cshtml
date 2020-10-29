@@ -49,11 +49,12 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Gerenciar Produtos **** EM DESENVOLVIMENTO **** <a href="/Produto/Cadastrar"><img alt="Adicionar Novo" title="Cadastrar Novo" src="~/images/icons/plus-square-solid.svg" width="20px" height="20px" style="position:absolute; right:20px;" /></a></h3>
+                        <h3 class="card-title">Gerenciar Produtos **** EM DESENVOLVIMENTO **** <a href="/Produto/Cadastrar"><img alt="Adicionar Novo" title="Cadastrar Novo" src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; right:20px;" /></a></h3>
                     </div>
+
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="products-table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Produto</th>
@@ -64,19 +65,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr style="display: none">
                                     <td>Tenis Nike Air Pro</td>
                                     <td>
                                         Calçados
                                     </td>
                                     <td>380,00</td>
                                     <td> 480,00</td>
-                                    <td>
+                                    <td id="acoes">
                                         <a href="/Produto/Editar">
-                                            <img title="Alterar Produto" src="~/images/icons/edit-solid.svg" width="20px" height="20px" />
+                                            <img title="Alterar Produto" src="~/images/icons/edit-solid.svg" width="20" height="20" />
                                         </a>
                                         <a href="/Produto/Remover">
-                                            <img title="Remover Produto" src="~/images/icons/trash-alt-solid.svg" width="20px" height="20px" style="margin-left: 10px;" />
+                                            <img title="Remover Produto" src="~/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
                                         </a>
                                     </td>
                                 </tr>

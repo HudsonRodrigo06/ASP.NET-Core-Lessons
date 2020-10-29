@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace Aula1.DAL
@@ -15,38 +16,77 @@ namespace Aula1.DAL
 
 		public bool Gravar(Usuario usuario)
 		{
-			// Mapeamento Objeto-Relacional --> transformar objeto em linha de tabela do banco
-			string sql =
-				@"INSERT usuario (Nome, Email, Senha) 
+			bool ok = false;
+
+			#region Usar outra conexão para transações que precisam se manterem abertas, como o Gravar() varios itens de tabelas diferentes ou vários selects
+
+			MySqlPersistence _localbd = new MySqlPersistence(true); // true mantem a conexao aberta
+			
+			#endregion
+
+			try
+			{
+				_localbd.IniciarTransacao(); // a partir daqui, abre transação e o codigo está protegido
+
+				// Mapeamento Objeto-Relacional --> transformar objeto em linha de tabela do banco
+				string sql =
+					@"INSERT usuario (Nome, Email, Senha) 
 					VALUES (@Nome, @Email, @Senha)";
 
-			Dictionary<string, object> parametros = new Dictionary<string, object>();
-			
-			parametros.Add("@Nome", usuario.Nome);
-			parametros.Add("@Email", usuario.Email);
-			parametros.Add("@Senha", usuario.Senha);
+				Dictionary<string, object> parametros = new Dictionary<string, object>();
 
-			return _bd.ExecuteNonQuery(sql, parametros) > 0;
+				parametros.Add("@Nome", usuario.Nome);
+				parametros.Add("@Email", usuario.Email);
+				parametros.Add("@Senha", usuario.Senha);
+
+				int qtdeLinhas = _localbd.ExecuteNonQuery(sql, parametros);
+				ok = qtdeLinhas > 0;
+
+				// confirma transacao
+				_localbd.TransacaoCommit();
+
+			}
+			catch
+			{
+
+				_localbd.TransacaoRollback();
+			}
+			finally
+			{
+				_localbd.Fechar();
+				
+			}
+
+			return ok;
 		}
 
-		public List<Usuario> getUsuarios(string nome)
+		public List<Usuario> Pesquisar(string nome)
 		{
-			_bd.Abrir();
-
 			List<Usuario> users = new List<Usuario>();
 			string sql = $@"select *
 							from usuario
 							where nome like @Nome";
 
-			Dictionary<string, object> parametros = new Dictionary<string, object>();
+			try
+			{
+				Dictionary<string, object> parametros = new Dictionary<string, object>();
 
-			parametros.Add("@Nome", "%" + nome + "%");
+				parametros.Add("@Nome", "%" + nome + "%");
 
-			DbDataReader dr = _bd.ExecuteQuery(sql, parametros);
+				DbDataReader dr = _bd.ExecuteQuery(sql, parametros);
 
-			users = Map(dr);
+				users = Map(dr);
+			}
+			catch
+			{
 
-			_bd.Fechar();
+				return null;
+			}
+			finally
+			{
+				if (!_bd._manterConexaoAberta)
+					_bd.Fechar();
+			}
 
 			return users;
 		}
@@ -88,24 +128,54 @@ namespace Aula1.DAL
 		{
 			string sql =
 
-				 $"SELECT * FROM usuario WHERE UsuarioId = {id}";
+				 @$"SELECT * FROM usuario WHERE UsuarioId = {id}";
 
 			try
 			{
 				DbDataReader dr = _bd.ExecuteQuery(sql);
 				
-				dr.Read();
+				//dr.Read();
 				usr = Map(dr).First();
 
 				return true;
 			}
-			catch(Exception ex)
+			catch
 			{
 				return false;
 			}
 			finally
 			{
-				_bd.Fechar();
+				if (!_bd._manterConexaoAberta)
+					_bd.Fechar();
+			}
+		}
+
+		public bool getUsuario(string email, Usuario usr)
+		{
+			string sql =
+				 @$"SELECT * FROM usuario WHERE Email = @Email and Senha = @Senha";
+
+			try
+			{
+				Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+				parametros.Add("@Email", email);
+				parametros.Add("@Senha", usr.Senha);
+
+				DbDataReader dr = _bd.ExecuteQuery(sql, parametros);
+
+				usr.Nome = Map(dr).First().Nome;
+
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+			finally
+			{
+				if (!_bd._manterConexaoAberta)
+					_bd.Fechar();
 			}
 		}
 
@@ -115,14 +185,30 @@ namespace Aula1.DAL
 
 				@"SELECT * FROM usuario WHERE Email = @Email AND Senha = @Senha";
 
-			Dictionary<string, object> parametros = new Dictionary<string, object>();
+			bool ok = false;
 
-			parametros.Add("@Email", usuario.Email);
-			parametros.Add("@Senha", usuario.Senha);
+			try
+			{
+				Dictionary<string, object> parametros = new Dictionary<string, object>();
 
-			object dados = _bd.ExecuteQueryScalar(sql, parametros);
+				parametros.Add("@Email", usuario.Email);
+				parametros.Add("@Senha", usuario.Senha);
 
-			return (dados != null && Convert.ToInt32(dados) > 0);
+				object dados = _bd.ExecuteQueryScalar(sql, parametros);
+
+				ok = (dados != null && Convert.ToInt32(dados) > 0);
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine("UsuarioDAL/ValidarUsuaio: " + ex.Message);
+			}
+			finally
+			{
+				if (!_bd._manterConexaoAberta)
+					_bd.Fechar();
+			}
+
+			return ok;
 		}
 
 

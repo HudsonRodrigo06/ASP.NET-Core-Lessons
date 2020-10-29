@@ -9,6 +9,10 @@
    
 
     <script src="~/js/Views/Produto/Cadastrar.js"></script>
+
+    
+
+
 }
 
 @section estilos {
@@ -26,7 +30,7 @@
             <div class="card card-primary">
                 <div class="card-header">
                     
-                    <h3 class="card-title">Cadastrar Produto  </h3> <a href="/Produto"><img src="~/images/icons/arrow-circle-left-solid.svg" width="20px" height="20px" style="position:absolute; margin-left:10px; right:18px" /> </a>
+                    <h3 class="card-title">Cadastrar Produto  </h3> <a href="/Produto"><img src="~/images/icons/arrow-circle-left-solid.svg" width="20" height="20" style="position:absolute; margin-left:10px; right:18px" /> </a>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -38,7 +42,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Categoria <a href="/Categoria/Cadastrar"><img src="~/images/icons/plus-square-solid.svg" width="20px" height="20px" style="position:absolute; margin-left:10px; margin-top: 3px;" /></a></label>
+                            <label>Categoria <a href="/Categoria/Cadastrar"><img src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; margin-left:10px; margin-top: 3px;" /></a></label>
                             <select class="form-control select2" style="width: 100%;" id="Categoria">
                                 <option value="1" selected="selected">Calçados</option>
                                 <option value="2">Eletrônicos</option>
@@ -126,11 +130,14 @@
                                 <td>380,00</td>
                                 <td> 480,00</td>
                                 <td>
-                                    <a href="/Produto/Editar">
+                                    
+                                    <input type="image" src="~/images/icons/edit-solid.svg"  width="20" height="20"  class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
+
+                                    @*<a href="/Produto/Editar">
                                         <img src="~/images/icons/edit-solid.svg" width="20px" height="20px" />
-                                    </a>
+                                    </a>*@
                                     <a href="/Produto/Remover">
-                                        <img src="~/images/icons/trash-alt-solid.svg" width="20px" height="20px" style="margin-left: 10px;" />
+                                        <img src="~/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
                                     </a>
                                 </td>
                             </tr>

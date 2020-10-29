@@ -1,6 +1,7 @@
 ﻿using Aula1.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,9 +29,40 @@ namespace Aula1.DAL
 		}
 
 
-		
-		 
-			
+
+		private List<Produto> Map(DbDataReader dr)
+		{
+			List<Produto> prods = new List<Produto>();
+
+			if (dr.HasRows)
+			{
+				while (dr.Read())
+				{
+					Produto p = new Produto();
+					Categoria cat = new Categoria();
+
+					int catId = Convert.ToInt32(dr["CategoriaId"]);
+					if (cat.getCategoria(catId))
+					{
+						p.Categoria = cat;
+
+						p.Id = Convert.ToInt32(dr["ProdutoId"]);
+						p.Nome = Convert.ToString(dr["NomeProd"]);
+						p.PrecoCompra = Convert.ToDecimal(dr["vCompra"].ToString());
+						p.PrecoVenda = Convert.ToDecimal(dr["vVenda"].ToString());
+
+						prods.Add(p);
+					}
+					else
+						throw new Exception("[ProdutoDAL/Map]: " + "Erro ao buscar CategoriaId");
+				}
+			}
+
+			return prods;
+		}
+
+
+
 		/// <summary>
 		/// Retorna todos os produtos da base de dados
 		/// </summary>
@@ -47,7 +79,24 @@ namespace Aula1.DAL
 					  ON 
 						p.CategoriaId = c.CategoriaId";
 
-			return _bd.getProdutos(sql);
+			List<Produto> lista = new List<Produto>();
+
+			try
+			{
+				DbDataReader dr = _bd.ExecuteQuery(sql);
+				lista = Map(dr);	
+			}
+			catch
+			{
+				
+			}
+			finally
+			{
+				if(!_bd._manterConexaoAberta)
+					_bd.Fechar();
+			}
+
+			return lista;
 		}
 	}
 }

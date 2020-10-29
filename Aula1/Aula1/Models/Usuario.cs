@@ -42,11 +42,18 @@ namespace Aula1.Models
 			return ud.getUsuario(id, this);
 		}
 
-		public List<Usuario> getUsuarios(string nome)
+		public bool getUsuario(string email)
 		{
 			UsuarioDAL ud = new UsuarioDAL();
 
-			return ud.getUsuarios(nome);
+			return ud.getUsuario(email, this);
+		}
+
+		public List<Usuario> Pesquisar(string nome)
+		{
+			UsuarioDAL ud = new UsuarioDAL();
+
+			return ud.Pesquisar(nome);
 		}
 
 		public bool ValidarLogin()

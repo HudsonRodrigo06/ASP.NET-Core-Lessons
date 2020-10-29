@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula1.DAL;
 using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Aula1.Controllers
 {
@@ -58,6 +60,24 @@ namespace Aula1.Controllers
 				msg = msg
 
 			});
+		}
+
+		public IActionResult Consultar()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+			List<Produto> lista = new List<Produto>();
+
+			lista = pd.getProdutos();
+
+			string sLista = JsonSerializer.Serialize(lista);
+			bool ok = lista.Count > 0;
+
+			return Json(new
+				{
+					operacao = ok,
+					lista = sLista
+			}
+			);;
 		}
 
 

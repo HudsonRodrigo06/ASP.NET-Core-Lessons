@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto.Tls;
 
 namespace Aula1.Controllers
 {
@@ -20,12 +21,20 @@ namespace Aula1.Controllers
 			user.Email = dados.GetProperty("Email").ToString();
 			user.Senha = dados.GetProperty("Senha").ToString();
 
+			ViewData["userName"] = "";
+			if (user.ValidarLogin() && user.getUsuario(user.Email))
+				ViewData["userName"] = user.Nome;
+
+			bool ok = ViewBag.userName != "";
+
 			//retorna objeto anonimo
 			return Json(new
 			{
-				operacao = user.ValidarLogin()
-			});
+				operacao = ok,
+				userName = user.Nome
+			}); 
 
 		}
+
 	}
 }

@@ -20,7 +20,7 @@ namespace Aula1.Models.Tests
 		public void GravarTest()
 		{
 
-			Usuario user = new Usuario(0, "Hud Teste", "hud@hud.com", "123");
+			Usuario user = new Usuario(0, "XDXDXD Teste", "xd@xd.com", "123");
 
 			bool ok = user.Gravar();
 
@@ -57,14 +57,28 @@ namespace Aula1.Models.Tests
 		}
 
 		[TestMethod()]
-		public void getUsuariosTest()
+		public void PesquisarTest()
 		{
-			bool ok = false;
 			Usuario usr = new Usuario();
 
-			var list = usr.getUsuarios("hud");
+			var list = usr.Pesquisar("hud");
 
 			Assert.IsTrue(list.Count > 0);
 		}
+
+		[TestMethod()]
+		public void getUsuarioEmailTest()
+		{
+			bool ok = false;
+			Usuario usr = new Usuario();
+			usr.Email = "a@a.com";
+			usr.Senha = "123";
+
+			ok = usr.ValidarLogin() && usr.getUsuario(usr.Email);
+
+			Assert.IsTrue(ok);
+		}
+
+	
 	}
 }
