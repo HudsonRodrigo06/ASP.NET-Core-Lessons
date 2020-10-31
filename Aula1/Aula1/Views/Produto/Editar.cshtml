@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_LayoutSimples.cshtml";
+
+}
+
+@section javascript {
+    <script src="~/js/Views/Produto/Editar.js"></script>
+
+}
+
+@section estilos {
+
+    <link href="~/css/Views/Produtos/Index.css" rel="stylesheet" />
+
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card card-warning">
+                <div class="card-header">
+
+                    <h3 class="card-title">Alterar Produto</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body" style="width: 22rem;">
+                        <div class="form-group">
+                            <label for="">ID</label>
+                            <input value="@ViewBag.Produto.Id" type="text" class="form-control" id="id" required name="id" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nome</label>
+                            <input value="@ViewBag.Produto.Nome" type="text" class="form-control" id="Nome" required name="Nome" placeholder="Nome do produto">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Categoria <img src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; margin-left:10px; margin-top: 3px;" /></label>
+                            <select class="form-control select2" style="width: 100%;" id="Categoria">
+                                <option value="1" selected="selected">Calçados</option>
+                                <option value="2">Eletrônicos</option>
+                                <option value="3">Móveis</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">($) Valor Compra</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input value="@ViewBag.Produto.PrecoCompra" type="text" class="form-control" id="vCompra" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">($) Valor Venda</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input value="@ViewBag.Produto.PrecoVenda" type="text" class="form-control" id="vVenda" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <!-- /.card-body -->
+
+
+
+                    <div class="card-footer">
+                        <button type="button" onclick="editar.salvarAlteracao()" class="btn btn-primary btn-sm float-right" id="right">Gravar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+        <!--/.col (left) -->
+
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->

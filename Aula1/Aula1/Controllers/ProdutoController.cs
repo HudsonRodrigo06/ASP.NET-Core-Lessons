@@ -95,6 +95,68 @@ namespace Aula1.Controllers
 
 		}
 
+		/// <summary>
+		/// Alimenta ViewBags
+		/// </summary>
+		/// <param name="dados">Dados json frombody</param>
+		public void AlimentarDados([FromBody] System.Text.Json.JsonElement dados)
+		{
+			Produto prod = new Produto();
+			Categoria cat = new Categoria();
+
+			try
+			{
+				cat.Id = Convert.ToInt32(dados.GetProperty("CatId").ToString());
+				cat.Nome = dados.GetProperty("Categoria").ToString();
+
+				prod.Id = Convert.ToInt32(dados.GetProperty("ProdutoId").ToString());
+				prod.Nome = dados.GetProperty("Nome").ToString();
+				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
+				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
+
+				/* ALIMENTA VIEWBAGS */
+				ViewBag.Produto = prod;
+				ViewBag.Categoria = cat;
+			}
+			catch
+			{ }
+		}
+
+		public IActionResult Editar()
+		{
+
+			return View();
+		}
+
+
+		public IActionResult SalvarEdicao([FromBody] System.Text.Json.JsonElement dados)
+		{
+			Produto prod = new Produto();
+			bool ok = false;
+
+			try
+			{
+				int catId = Convert.ToInt32(dados.GetProperty("CatId").ToString());
+
+				prod.Id = Convert.ToInt32(dados.GetProperty("ID").ToString());
+				prod.Nome = dados.GetProperty("Nome").ToString();
+				prod.Categoria = new Categoria(catId, dados.GetProperty("Categoria").ToString());
+				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
+				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
+
+				ok = prod.Alterar();
+			}
+			catch (Exception)
+			{
+
+			}
+
+			return Json(new
+			{
+				operacao = ok
+			});
+		}
+	
 
 	}
 }

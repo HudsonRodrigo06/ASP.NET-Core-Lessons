@@ -51,7 +51,7 @@ let index = {
                 <td style="text-align: right">${vCompra}</td>
                 <td style="text-align: right">${vVenda}</td>
                 <td id="acoes">
-                    <img onclick = "index.telaEditar(${item.id}, ${item.nome}, ${item.categoria.id}, ${item.precoCompra}, ${item.precoVenda}, this)" title="Alterar Produto" src="/images/icons/edit-solid.svg" width="20" height="20" />
+                    <img onclick = "index.telaEditar(this, ${item.categoria.id})" title="Alterar Produto" src="/images/icons/edit-solid.svg" width="20" height="20" />
                     <img  onclick = "index.remover(${item.id}, this)" title="Remover Produto" src="/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
                 </td>
             </tr>`;
@@ -83,7 +83,22 @@ let index = {
         });
     },
 
-    telaEditar: function (id, nome, vCompra, vVenda) {
+    telaEditar: function (elem, catId) {
+
+        //guarda dados do produto para preencher na tela de edição
+        dados = {
+            ProdutoId: $(elem).closest('tr').find('td').eq('0').text(),
+            Nome: $(elem).closest('tr').find('td').eq('1').text(),
+            Categoria: $(elem).closest('tr').find('td').eq('2').text(),
+            CatId: catId,
+            vCompra: $(elem).closest('tr').find('td').eq('3').text(),
+            vVenda: $(elem).closest('tr').find('td').eq('2').text()
+        };
+
+        //envia dados para alimentar ViewBags
+        HTTPClient.post("Produto/AlimentarDados", dados).then();
+
+        //renderiza tela com dados das ViewBags
         $.fancybox.open({
             src: '/Produto/Editar',
             type: 'iframe',
@@ -93,6 +108,8 @@ let index = {
             }
         });
     },
+
+    // $(elem).closest('tr').find('td').eq('2').text()
 
     remover: function (produtoId, elem) {
 

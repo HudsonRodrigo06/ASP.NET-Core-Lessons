@@ -36,6 +36,35 @@ namespace Aula1.DAL
 
 		}
 
+		public bool Alterar(Produto p)
+		{
+			string sql = @"UPDATE 
+								produto 
+							SET
+								ProdutoId = @pId,
+								Nome = @pNome,
+								CategoriaId = @cID,
+								vCompra = @pCompra,
+								vVenda = @pVenda";
+
+			try
+			{
+				Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+
+				parametros.Add("@pId", p.Id);
+				parametros.Add("@pNome", p.Nome);
+				parametros.Add("@cID", p.Categoria.Id);
+				parametros.Add("@pCompra", p.PrecoCompra);
+				parametros.Add("@pVenda", p.PrecoVenda);
+
+				return _bd.ExecuteNonQuery(sql, parametros) > 0;
+			}
+			catch {	}
+
+			return false;
+		}
+
 
 
 		private List<Produto> Map(DbDataReader dr)

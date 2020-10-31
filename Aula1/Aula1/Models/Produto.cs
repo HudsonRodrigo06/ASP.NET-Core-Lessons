@@ -59,6 +59,13 @@ namespace Aula1.Models
 			return pd.Gravar(this);
 		}
 
+		public bool Alterar()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+
+			return pd.Alterar(this);
+		}
+
 		public List<Produto> getProdutos()
 		{
 			ProdutoDAL pd = new ProdutoDAL();
