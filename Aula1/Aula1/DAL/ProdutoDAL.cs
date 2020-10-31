@@ -28,6 +28,14 @@ namespace Aula1.DAL
 			return _bd.ExecuteNonQuery(sql, parametros) > 0;
 		}
 
+		public bool Remover(int id)
+		{
+			string sql = "DELETE from produto where ProdutoId = " + id;
+
+			return _bd.ExecuteNonQuery(sql) > 0;
+
+		}
+
 
 
 		private List<Produto> Map(DbDataReader dr)

@@ -6,18 +6,14 @@
 
 @section javascript {
 
-   
-
     <script src="~/js/Views/Produto/Cadastrar.js"></script>
-
-    
-
 
 }
 
 @section estilos {
 
-    
+    <link href="~/css/Views/Produtos/Index.css" rel="stylesheet" />
+
 }
 
 
@@ -25,12 +21,12 @@
 <div class="container-fluid">
     <div class="row">
         <!-- left column -->
-        <div class="col-lg-12" >
+        <div class="col-lg-12">
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    
-                    <h3 class="card-title">Cadastrar Produto  </h3> <a href="/Produto"><img src="~/images/icons/arrow-circle-left-solid.svg" width="20" height="20" style="position:absolute; margin-left:10px; right:18px" /> </a>
+
+                    <h3 class="card-title">Cadastrar Produto</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -49,7 +45,7 @@
                                 <option value="3">Móveis</option>
                             </select>
 
-                        </div>     
+                        </div>
 
                         <div class="form-group">
                             <label for="">($) Valor Compra</label>
@@ -83,10 +79,10 @@
                     </div>
                     <!-- /.card-body -->
 
-                    
+
 
                     <div class="card-footer">
-                        <button type="button" onclick="cadastrar.gravar()" class="btn btn-primary btn-sm float-right" id="right" >Adicionar</button>
+                        <button type="button" onclick="cadastrar.gravar()" class="btn btn-primary btn-sm float-right" id="right">Adicionar</button>
                     </div>
                 </form>
             </div>
@@ -99,67 +95,3 @@
     </div>
     <!-- /.row -->
 </div><!-- /.container-fluid -->
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Produtos Cadastrados Exemplo **** EM DESENVOLVIMENTO ****</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Categoria</th>
-                                <th>Preço Compra</th>
-                                <th>Preço Venda</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tenis Nike Air Pro</td>
-                                <td>
-                                    Calçados
-                                </td>
-                                <td>380,00</td>
-                                <td> 480,00</td>
-                                <td>
-                                    
-                                    <input type="image" src="~/images/icons/edit-solid.svg"  width="20" height="20"  class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
-
-                                    @*<a href="/Produto/Editar">
-                                        <img src="~/images/icons/edit-solid.svg" width="20px" height="20px" />
-                                    </a>*@
-                                    <a href="/Produto/Remover">
-                                        <img src="~/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
-                                    </a>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Categoria</th>
-                                <th>Preço Compra</th>
-                                <th>Preço Venda</th>
-                                <th>Ação</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /.container-fluid -->

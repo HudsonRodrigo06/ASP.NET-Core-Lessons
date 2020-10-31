@@ -409,3 +409,5 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\bin\Debug\netcoreapp3.1\runtimes\win\lib
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.csproj.CoreCompileInputs.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cache
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Index.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Pesquisar.cshtml.g.cs

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section estilos{
+    <link href="~/lib/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="~/css/Views/Usuario/Index.css" rel="stylesheet" />
+}
+
+@section javascript {
+
+    <script src="~/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="~/js/Views/Usuario/Index.js"></script>
+
+}
+
+<div class="col-md-6">
+
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Gerenciar Usuarios</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form role="form">
+            <div class="card-body col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nome</label>
+                    <input class="form-control" id="usuario" placeholder="Nome do usuário">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="a@a.com">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" class="form-control" id="senha" placeholder="********">
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button onclick="index.pesquisar()" type="button" class="btn btn-primary">Pesquisar</button>
+            </div>
+        </form>
+    </div>
+    <!-- /.card -->
+
+</div>

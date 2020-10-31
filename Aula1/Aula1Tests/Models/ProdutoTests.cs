@@ -35,5 +35,18 @@ namespace Aula1.Models.Tests
 
 			Assert.IsTrue(prods.Count > 0);
 		}
+
+		[TestMethod()]
+		public void RemoverTest()
+		{
+			bool ok = false;
+
+			Produto p = new Produto();
+			p.Id = 2;
+
+			ok = p.Remover();
+
+			Assert.IsTrue(ok);
+		}
 	}
 }

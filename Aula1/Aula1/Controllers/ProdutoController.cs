@@ -62,22 +62,37 @@ namespace Aula1.Controllers
 			});
 		}
 
-		public IActionResult Consultar()
+		public IActionResult Consultar() // refazer usando Produto e nao Produto DAL
 		{
 			ProdutoDAL pd = new ProdutoDAL();
 			List<Produto> lista = new List<Produto>();
 
 			lista = pd.getProdutos();
 
-			string sLista = JsonSerializer.Serialize(lista);
-			bool ok = lista.Count > 0;
+			//string sLista = JsonSerializer.Serialize(lista);
+			bool ok = (lista != null);
 
 			return Json(new
 				{
 					operacao = ok,
-					lista = sLista
+					lista = lista
 			}
-			);;
+			);
+		}
+
+		public IActionResult Remover(string q)
+		{
+			Produto p = new Produto();
+
+			p.Id = Convert.ToInt32(q);
+
+			bool ok = p.Remover();
+
+			return Json(new
+			{
+				operacao = ok
+			});
+
 		}
 
 

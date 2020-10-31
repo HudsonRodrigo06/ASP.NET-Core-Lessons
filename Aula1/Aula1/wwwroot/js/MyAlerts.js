@@ -1,5 +1,30 @@
 ﻿let myalert = {
 
+	//perguntaMsg: function (elem) {
+
+	//	Swal.fire({
+	//		title: 'Confirma?',
+	//		text: "Realmente deseja remover o produto da base de dados?",
+	//		icon: 'warning',
+	//		showCancelButton: true,
+	//		confirmButtonColor: '#3085d6',
+	//		cancelButtonColor: '#d33',
+	//		confirmButtonText: 'Sim, remover!'
+	//	}).then((result) => {
+	//		if (result.isConfirmed) {
+
+	//			$(elem).closest('tr').remove();
+
+	//			Swal.fire(
+	//				'Produto removido!',
+	//				'Produto removido com sucesso!',
+	//				'success'
+	//			)
+	//		}
+	//	})
+
+	//},
+
 	// mensagem de erro
 	errorMsg: function (msg) {
 		Swal.fire({
@@ -16,7 +41,7 @@
 			msg,
 			'success'
 		).then(function () {
-			window.location.href = redirect;
+			window.location = redirect;
 		})
 
 	},

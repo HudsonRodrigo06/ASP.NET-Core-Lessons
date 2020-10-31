@@ -65,5 +65,11 @@ namespace Aula1.Models
 			return pd.getProdutos();
 		}
 
+		public bool Remover()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+			return pd.Remover(_id);
+		}
+
 	}
 }

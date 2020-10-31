@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="~/template/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="~/template/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+
+    @RenderSection("estilos", false)
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -198,7 +202,7 @@
                                 <li class="nav-item">
                                     <a href="./index2.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
+                                        <p>Usuários</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -285,9 +289,18 @@
     <script src="~/template/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/template/dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="~/template/dist/js/demo.js"></script>
+
+
+    <script src="~/template/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script src="~/js/MyAlerts.js"></script>
     <script src="~/js/HTTPClient.js"></script>
+
+    @RenderSection("javascript", false)
+
+
+
+
 
 </body>
 

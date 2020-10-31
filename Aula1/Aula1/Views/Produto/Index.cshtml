@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutSimples.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section javascript {
@@ -20,8 +20,10 @@
     <script src="~/template/dist/js/demo.js"></script>
 
     <!-- page script -->
+    <script src="~/lib/fancybox/dist/jquery.fancybox.min.js"></script>
 
     <script src="~/js/Views/Produto/Index.js"></script>
+    <script src="~/js/Views/Produto/Cadastrar.js"></script>
 
 }
 
@@ -37,9 +39,21 @@
     <link rel="stylesheet" href="~/template/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link href="~/lib/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="~/css/Views/Produtos/Index.css" rel="stylesheet" />
+
+    <style>
+        #cadastrar:hover {
+            cursor : pointer;
+        }
+    </style>
+
 }
 
 
+
+<input type="hidden" id="id" value="" />
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -49,7 +63,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Gerenciar Produtos **** EM DESENVOLVIMENTO **** <a href="/Produto/Cadastrar"><img alt="Adicionar Novo" title="Cadastrar Novo" src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; right:20px;" /></a></h3>
+                        <h3 class="card-title">Gerenciar Produtos <img id="cadastrar" onclick="index.telaCadastrar()" alt="Adicionar Novo" title="Cadastrar Novo" src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; right:20px;" /></h3>
                     </div>
 
                     <!-- /.card-header -->
