@@ -14,8 +14,6 @@ let cadastrar = {
 		var vvenda = document.getElementById("vVenda").value;
 
 
-		alert(document.getElementById("Categoria").innerHTML);
-
 		//**** add masks
 		
 		dados = {

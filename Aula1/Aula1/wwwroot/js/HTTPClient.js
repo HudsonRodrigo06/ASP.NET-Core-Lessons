@@ -1,6 +1,8 @@
 ﻿let HTTPClient = {
 
-	post: function (url, obj) {
+	post: async function (url, obj) {
+
+		HTTPClient.toggleLoading();
 
 		let config = {
 			method: "POST",
@@ -10,11 +12,14 @@
 			}
 		}
 
-		let p = fetch(url, config);
+		let p = await fetch(url, config);
+
+		HTTPClient.toggleLoading();
+
 		return p;
 	},
 
-	get: function (url) {
+	get: async function (url) {
 
 
 		let config = {
@@ -24,7 +29,36 @@
 			}
 		}
 
-		let p = fetch(url, config);
+		HTTPClient.toggleLoading();
+
+		let p = await fetch(url, config);
+
+		HTTPClient.toggleLoading();
+
 		return p;
+	},
+
+	toggleLoading: () => {
+
+		var divExiste = document.getElementById("divLoading");
+
+		if (divExiste == null) {
+
+			let div = document.createElement('div');
+			div.id = "divLoading";
+			div.className = "container-loading";
+
+			let img = document.createElement('img');
+			img.src = "/images/gifs/loading.gif";
+
+			div.appendChild(img);
+			document.body.appendChild(div);
+		}
+		else {
+			document.body.removeChild(divExiste);
+		}
+		
+
 	}
+
 }

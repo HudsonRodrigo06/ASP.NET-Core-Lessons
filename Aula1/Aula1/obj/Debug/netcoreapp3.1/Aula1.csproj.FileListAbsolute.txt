@@ -411,3 +411,4 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplica
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Index.cshtml.g.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Pesquisar.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Produto\Editar.cshtml.g.cs

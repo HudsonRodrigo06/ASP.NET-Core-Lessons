@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,8 @@ namespace Aula1.Controllers
 			Usuario user = new Usuario();
 			user.Email = dados.GetProperty("Email").ToString();
 			user.Senha = dados.GetProperty("Senha").ToString();
+
+			//Thread.Sleep(5000);
 
 			ViewData["userName"] = "";
 			if (user.ValidarLogin() && user.getUsuario(user.Email))
