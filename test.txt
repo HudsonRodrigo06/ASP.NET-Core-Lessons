@@ -1,0 +1,6 @@
+Tabela de usuarios -
+Cadastrar usuario com lista de endereços e telefones
+filtro de exibir usuarios por estado ou Bairro
+
+Botao para exibir detalhes, com todos os endereços e telefones.
+
