@@ -66,6 +66,12 @@ namespace Aula1.Models
 			return pd.Alterar(this);
 		}
 
+		public Produto getProduto(int id)
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+			return pd.getProduto(id);
+		}
+
 		public List<Produto> getProdutos()
 		{
 			ProdutoDAL pd = new ProdutoDAL();
@@ -76,6 +82,14 @@ namespace Aula1.Models
 		{
 			ProdutoDAL pd = new ProdutoDAL();
 			return pd.Remover(_id);
+		}
+
+		public int getMaxPK()
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+
+			return pd.getMaxPK();
+
 		}
 
 	}

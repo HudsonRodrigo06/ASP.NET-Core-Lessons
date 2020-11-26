@@ -8403,23 +8403,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Avaliacao\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Hudson\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "T:\\ASP.NET-Core-MVC-Lessons\\Aula1\\Aula1Tests\\Aula1Tests.csproj",
+      "projectUniqueName": "C:\\www\\ASP.NET-Core-Lessons\\Aula1\\Aula1Tests\\Aula1Tests.csproj",
       "projectName": "Aula1Tests",
-      "projectPath": "T:\\ASP.NET-Core-MVC-Lessons\\Aula1\\Aula1Tests\\Aula1Tests.csproj",
-      "packagesPath": "C:\\Users\\Avaliacao\\.nuget\\packages\\",
-      "outputPath": "T:\\ASP.NET-Core-MVC-Lessons\\Aula1\\Aula1Tests\\obj\\",
+      "projectPath": "C:\\www\\ASP.NET-Core-Lessons\\Aula1\\Aula1Tests\\Aula1Tests.csproj",
+      "packagesPath": "C:\\Users\\Hudson\\.nuget\\packages\\",
+      "outputPath": "C:\\www\\ASP.NET-Core-Lessons\\Aula1\\Aula1Tests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Avaliacao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hudson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8432,8 +8428,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "T:\\ASP.NET-Core-MVC-Lessons\\Aula1\\Aula1\\Aula1.csproj": {
-              "projectPath": "T:\\ASP.NET-Core-MVC-Lessons\\Aula1\\Aula1\\Aula1.csproj"
+            "C:\\www\\ASP.NET-Core-Lessons\\Aula1\\Aula1\\Aula1.csproj": {
+              "projectPath": "C:\\www\\ASP.NET-Core-Lessons\\Aula1\\Aula1\\Aula1.csproj"
             }
           }
         }

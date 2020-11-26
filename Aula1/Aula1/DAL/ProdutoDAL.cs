@@ -41,11 +41,12 @@ namespace Aula1.DAL
 			string sql = @"UPDATE 
 								produto 
 							SET
-								ProdutoId = @pId,
 								Nome = @pNome,
 								CategoriaId = @cID,
 								vCompra = @pCompra,
-								vVenda = @pVenda";
+								vVenda = @pVenda
+							WHERE
+								ProdutoId = @pId";
 
 			try
 			{
@@ -65,7 +66,28 @@ namespace Aula1.DAL
 			return false;
 		}
 
+		public int getMaxPK()
+		{
+			int maxPK = -1;
+			string sql = @"SELECT 
+								MAX(ProdutoId) as MaxPK
+							FROM
+								produto";
 
+			try
+			{
+				DbDataReader dr = _bd.ExecuteQuery(sql);
+				if (dr.Read())
+					maxPK = Convert.ToInt32(dr["MaxPK"]);
+			}
+			catch { }
+			finally
+			{
+				_bd.Fechar();
+			}
+
+			return maxPK;
+		}
 
 		private List<Produto> Map(DbDataReader dr)
 		{
@@ -114,7 +136,9 @@ namespace Aula1.DAL
 					  JOIN 
 						categoria c 
 					  ON 
-						p.CategoriaId = c.CategoriaId";
+						p.CategoriaId = c.CategoriaId
+					  ORDER BY 
+						p.ProdutoId";
 
 			List<Produto> lista = new List<Produto>();
 
@@ -134,6 +158,55 @@ namespace Aula1.DAL
 			}
 
 			return lista;
+		}
+
+		public Produto getProduto(int id)
+		{
+			string sql =
+					@"select 
+						*
+					  from 
+						produto p 
+					  WHERE
+						p.ProdutoId = " + id;
+
+			Produto p = new Produto();
+
+			try
+			{
+				DbDataReader dr = _bd.ExecuteQuery(sql);
+
+				if (dr.Read())
+				{
+					Categoria cat = new Categoria();
+
+					int catId = Convert.ToInt32(dr["CategoriaId"]);
+					if (cat.getCategoria(catId))
+					{
+						p.Categoria = cat;
+
+						p.Id = Convert.ToInt32(dr["ProdutoId"]);
+						p.Nome = Convert.ToString(dr["Nome"]);
+						p.PrecoCompra = Convert.ToDecimal(dr["vCompra"].ToString());
+						p.PrecoVenda = Convert.ToDecimal(dr["vVenda"].ToString());
+					}
+					else
+						throw new Exception("[ProdutoDAL/getProduto]: " + "Erro ao buscar CategoriaId");
+				}
+
+
+			}
+			catch
+			{
+
+			}
+			finally
+			{
+				if (!_bd._manterConexaoAberta)
+					_bd.Fechar();
+			}
+
+			return p;
 		}
 	}
 }

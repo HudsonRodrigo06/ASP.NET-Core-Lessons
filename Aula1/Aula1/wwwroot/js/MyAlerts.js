@@ -52,7 +52,14 @@
 			'Good job!',
 			msg,
 			'success'
-		)
+		).then(() => {
+
+			var existeFancy = document.getElementsByClassName("fancybox-iframe");
+
+			if (existeFancy != null)
+				window.parent.$.fancybox.close();
+
+		})
 	}
 
 }

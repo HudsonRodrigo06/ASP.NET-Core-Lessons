@@ -16,10 +16,27 @@ namespace Aula1.Controllers
 			return View();
 		}
 
+		public IActionResult Cadastrar(string q)
+		{
+			//edit
+			if (q != null && !q.Equals("0"))
+			{
+				int id = Convert.ToInt32(q);
 
-		public IActionResult Cadastrar()
-		{	
-			
+				Produto p = new Produto().getProduto(id);
+
+				ViewBag.Title = "Editar Produto";
+				ViewBag.Produto = p;
+			}
+			//new
+			else
+			{
+				ViewBag.Title = "Cadastrar Produto";
+				ViewBag.Produto = null;
+			}
+
+
+
 			return View();
 		}
 
@@ -28,6 +45,12 @@ namespace Aula1.Controllers
 			string msg = "";
 			bool operacao = false;
 			Produto prod = new Produto();
+
+			string sId = dados.GetProperty("ProdId").ToString();
+			int id = 0;
+
+			if (sId != null && !sId.Equals("0"))
+				id = Convert.ToInt32(sId);
 
 			try
 			{
@@ -38,13 +61,32 @@ namespace Aula1.Controllers
 				prod.PrecoCompra = decimal.Parse(dados.GetProperty("vCompra").ToString());
 				prod.PrecoVenda = decimal.Parse(dados.GetProperty("vVenda").ToString());
 
-				if (prod.Gravar())
+
+				if(id > 0)
 				{
-					operacao = true;
-					msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
+					prod.Id = id;
+					if (prod.Alterar())
+					{
+						operacao = true;
+						msg = "Produto " + prod.Nome + " foi alterado com sucesso!";
+					}
+					else
+						msg = "Houve algum problema ao alterar " + prod.Nome + " no Banco de Dados.";
 				}
 				else
-					msg = "Houve algum problema ao gravar " + prod.Nome + " no Banco de Dados.";
+				{
+					if (prod.Gravar())
+					{
+						prod.Id = prod.getMaxPK();
+						operacao = true;
+						msg = "Produto " + prod.Nome + " foi cadastrado com sucesso!";
+					}
+					else
+						msg = "Houve algum problema ao gravar " + prod.Nome + " no Banco de Dados.";
+				}
+
+
+				
 
 			}
 			catch (Exception ex)
@@ -57,7 +99,8 @@ namespace Aula1.Controllers
 			return Json(new
 			{
 				operacao = operacao,
-				msg = msg
+				msg = msg,
+				id = prod.Id
 
 			});
 		}

@@ -68,7 +68,7 @@ namespace Aula1
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Login}/{action=Index}/{id?}");
+					pattern: "{controller=Produto}/{action=Index}/{id?}");
 			});
 		}
 	}

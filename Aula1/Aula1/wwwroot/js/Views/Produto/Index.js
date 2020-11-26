@@ -9,6 +9,7 @@
 let index = {
 
     formatar: function (valor) {
+        valor = parseFloat(valor);
         return valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
     },
 
@@ -44,9 +45,6 @@ let index = {
                 vCompra = index.formatar(vCompra);
                 vVenda = index.formatar(vVenda);
 
-                var sJson = JSON.stringify(item);
-                sJson = index.formatarJsonHTML(sJson); // *prop*
-
                 novaLinha +=
             `<tr>
                 <td>${item.id}</td>
@@ -55,8 +53,8 @@ let index = {
                 <td style="text-align: right">${vCompra}</td>
                 <td style="text-align: right">${vVenda}</td>
                 <td id="acoes">
-                    <img onclick = "index.telaEditar('${sJson}')" title="Alterar Produto" src="/images/icons/edit-solid.svg" width="20" height="20" />
-                    <img  onclick = "index.remover('${sJson}')" title="Remover Produto" src="/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
+                    <img onclick = "index.telaEditar('${item.id}')" title="Alterar Produto" src="/images/icons/edit-solid.svg" width="20" height="20" />
+                    <img  onclick = "index.remover('${item.id}', this)" title="Remover Produto" src="/images/icons/trash-alt-solid.svg" width="20" height="20" style="margin-left: 10px;" />
                 </td>
             </tr>`;
                 
@@ -82,12 +80,6 @@ let index = {
         return str.replaceAll('"', '*');
     },
 
-    //restaura aspas
-    restaurarJson: (str) => {
-
-        return str.replaceAll('*', '"');
-    },
-
     telaCadastrar: function () {
         $.fancybox.open({
             src: '/Produto/Cadastrar',
@@ -99,33 +91,18 @@ let index = {
         });
     },
 
-    telaEditar: function (sJson) {
-
-        var rJson = index.restaurarJson(sJson); // "prop"
-        var objJson = JSON.parse(rJson);
-
-
-        //guarda dados do produto para preencher na tela de edição
-        dados = {
-            ProdutoId: objJson.Id,
-            Nome: objJson.Nome,
-            Categoria: objJson.Categoria,
-            vCompra: objJson.PrecoCompra,
-            vVenda: objJson.PrecoVenda
-        };
-
-        //envia dados para alimentar ViewBags
-        HTTPClient.post("Produto/AlimentarDados", dados);
+    telaEditar: function (id) {
 
         //renderiza tela com dados das ViewBags
         $.fancybox.open({
-            src: '/Produto/Editar',
+            src: '/Produto/Cadastrar?q=' + id,
             type: 'iframe',
             smallBtn: true,
             opts: {
                 preload: true
             }
         });
+
     },
 
     // $(elem).closest('tr').find('td').eq('2').text()
