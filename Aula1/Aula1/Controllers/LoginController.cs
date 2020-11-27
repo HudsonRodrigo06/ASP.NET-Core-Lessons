@@ -14,6 +14,9 @@ namespace Aula1.Controllers
 	{
 		public IActionResult Index()
 		{
+			if(Request.Cookies["CookieAuth"] != null)
+				return Redirect("/Default/Index");
+
 			return View();
 		}
 
