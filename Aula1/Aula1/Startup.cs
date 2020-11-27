@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,7 +40,35 @@ namespace Aula1
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-	
+			#region Serviço de Cookie Authorization
+
+			services.AddAuthentication(opt =>
+			{
+
+				opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+				opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+				opt.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+			}).AddCookie(opt => {
+
+				opt.Cookie.Name = "CookieAuth";
+				opt.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Login/Index");
+				opt.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Index");
+				opt.ExpireTimeSpan = TimeSpan.FromDays(7);
+
+			});
+
+
+			services.AddAuthorization(opt =>
+			{
+				opt.AddPolicy("CookieAuth", new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+					.AddAuthenticationSchemes(CookieAuthenticationDefaults.AuthenticationScheme)
+					.RequireAuthenticatedUser().Build());
+			});
+
+
+			#endregion
+
 
 
 			// defaults
