@@ -27,7 +27,16 @@
                     Valor: valor
 
                 });
+
                 todolist.carregarTabela();
+                todolist.uncheck();
+            },
+
+            uncheck: function () {
+                // pega cada item selecionado e desmarca
+                $("input:checkbox:checked").each(function () {
+                    $(this).prop('checked', false);
+                });
             },
 
             remover: function (id, elem) {
@@ -44,25 +53,23 @@
 
             removerSels: function () {
 
-                //pega todos checkbox "checked" e varre array, pegando value(id)
-                $("input:checkbox[type=checkbox]:checked").each(function(){
-                    $(this).closest('tr').remove();
-
+                // pega cada item selecionado e remove da tabela e do array usando o id (value)
+                $("tbody input:checkbox:checked").each(function(){
                     var removido = todolist.dados.filter(item =>
                         item.Id != $(this).val()
                     );
 
                     todolist.dados = removido;
+                    $(this).closest('tr').remove();
                 });
 
+                todolist.uncheck();
             },
 
             carregarTabela: function () {
 
                 var tbody = document.getElementById("tableBody");
                 var linhas = "";
-
-                
 
                 todolist.dados.forEach(item => {
                     linhas +=
@@ -80,9 +87,12 @@
 
             selecionarTodos: function (elem) {
 
-                $("input:checkbox[type=checkbox]").each(function () {
-                    $(this).attr("checked", elem.checked);
-                });
+                //check todas
+                $("input[type=checkbox]").prop('checked', $(elem).prop('checked'));
+
+                //$("input:checkbox").each(function () {
+                //    $(this).attr("checked", elem.checked);
+                //});
             }
 
         }
