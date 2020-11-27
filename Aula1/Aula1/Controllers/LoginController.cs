@@ -64,5 +64,17 @@ namespace Aula1.Controllers
 
 		}
 
+		public IActionResult Sair()
+		{
+			if (Request.Cookies["CookieAuth"] != null)
+			{
+				Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignOutAsync(HttpContext);
+			}
+
+
+
+				return Redirect("/Login/Index");
+		}
+
 	}
 }

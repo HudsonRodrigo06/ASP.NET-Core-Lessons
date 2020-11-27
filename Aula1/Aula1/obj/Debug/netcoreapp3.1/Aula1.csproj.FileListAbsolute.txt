@@ -413,3 +413,4 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.genruntime
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Default\ExemploJSStorage.cshtml.g.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutSimples.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Default\ExemploJSToDoList.cshtml.g.cs

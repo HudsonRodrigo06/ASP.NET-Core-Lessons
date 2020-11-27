@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExemploJSToDoList</title>
+
+    <script>
+        var todolist = {
+
+            inc: 0,
+            dados: [],
+
+            adicionar: function () {
+
+                let valor = document.getElementById("txtValor").value;
+                let id = todolist.inc++;
+
+                todolist.dados.push({
+
+                    Id: id,
+                    Valor: valor
+
+                });
+                todolist.carregarTabela();
+            },
+
+            remover: function (id, elem) {
+                // o array removido recebe todos elementos que tenham indice diferente de id
+                var removido = todolist.dados.filter(item => 
+                    item.Id != id
+                );
+
+                todolist.dados = removido;
+
+                //todolist.carregarTabela();
+                $(elem).closest('tr').remove();
+            },
+
+            removerSels: function () {
+
+                //pega todos checkbox "checked" e varre array, pegando value(id)
+                $("input:checkbox[type=checkbox]:checked").each(function(){
+                    $(this).closest('tr').remove();
+
+                    var removido = todolist.dados.filter(item =>
+                        item.Id != $(this).val()
+                    );
+
+                    todolist.dados = removido;
+                });
+
+            },
+
+            carregarTabela: function () {
+
+                var tbody = document.getElementById("tableBody");
+                var linhas = "";
+
+                
+
+                todolist.dados.forEach(item => {
+                    linhas +=
+                        `<tr>
+                            <td><input type="checkbox" value="${item.Id}"></td>
+                            <td>${item.Valor}</td>
+                            <td><input type="button" value="X" onclick="todolist.remover(${item.Id}, this)"></td>
+                        </tr>`;
+                });
+
+                tbody.innerHTML = linhas;
+
+            },
+
+
+            selecionarTodos: function (elem) {
+
+                $("input:checkbox[type=checkbox]").each(function () {
+                    $(this).attr("checked", elem.checked);
+                });
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>TODO LIST - JS AVANÇADO </h1>
+
+    <input type="text" id="txtValor" />
+    <input type="button" id="btnAdicionar" value="+" onclick="todolist.adicionar(this)" />
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" onclick="todolist.selecionarTodos(this)">
+                </th>
+                <th>
+                    Item
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+
+    </table>
+
+    <input type="button" id="btnExcluirSels" value="Excluir Selecionados" onclick="todolist.removerSels()" />
+
+
+    <!-- jQuery -->
+    <script src="~/template/plugins/jquery/jquery.min.js"></script>
+
+</body>
+</html>

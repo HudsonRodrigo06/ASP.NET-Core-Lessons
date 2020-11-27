@@ -31,6 +31,11 @@ namespace Aula1.Controllers
 			return View();
 		}
 
+		public IActionResult ExemploJSToDoList()
+		{
+			return View();
+		}
+
 	}
 
 }
