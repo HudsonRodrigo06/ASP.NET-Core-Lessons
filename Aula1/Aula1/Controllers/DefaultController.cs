@@ -24,6 +24,11 @@ namespace Aula1.Controllers
 				ViewData["userName"] = "Bem vindo(a)";
 		}
 
+		public IActionResult ExemploJSStorage()
+		{
+			return View();
+		}
+
 	}
 
 }

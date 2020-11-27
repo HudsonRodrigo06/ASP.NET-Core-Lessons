@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExemploJSStorage</title>
+
+    <script>
+
+        dados = {
+            disciplina: "LPIV",
+            professor: "André"
+        };
+
+        ls = {
+            criar: function () {
+                localStorage.setItem("dados", JSON.stringify(dados));
+            },
+
+            ler: function () {
+
+                if (localStorage.getItem("dados") != null) {
+                    var obj = JSON.parse(localStorage.getItem("dados"));
+
+                    document.getElementById("mostrarLS").innerHTML = obj.disciplina + ", " + obj.professor;
+                }
+            },
+
+            destruir: function () {
+                localStorage.removeItem("dados");
+            }
+        },
+
+
+        ss = {
+            criar: function () {
+                sessionStorage.setItem("dados", JSON.stringify(dados));
+            },
+
+            ler: function () {
+                if (sessionStorage.getItem("dados") != null) {
+                    var obj = JSON.parse(sessionStorage.getItem("dados"));
+
+                    document.getElementById("mostrarSS").innerHTML = obj.disciplina + ", " + obj.professor;
+                }
+            },
+
+            destruir: function () {
+                sessionStorage.removeItem("dados");
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>Local Storage</h1>
+    <div style="margin: 20px">
+        <input type="button" value="criar" onclick="ls.criar()" />
+        <input type="button" value="ler" onclick="ls.ler()"/>
+        <div id="mostrarLS"></div>
+        <input type="button" value="destruir" onclick="ls.destruir()"/>
+    </div>
+
+    <h1>Session Storage</h1>
+    <div style="margin: 20px">
+        <input type="button" value="criar" onclick="ss.criar()" />
+        <input type="button" value="ler" onclick="ss.ler()" />
+        <div id="mostrarSS"></div>
+        <input type="button" value="destruir" onclick="ss.destruir()" />
+    </div>
+
+
+</body>
+</html>
