@@ -8,6 +8,7 @@ namespace Aula1.Controllers
 {
 	public class UsuarioController : Controller
 	{
+		//[Authorize("CookieAuth")]
 		public IActionResult Index()
 		{
 			return View();
