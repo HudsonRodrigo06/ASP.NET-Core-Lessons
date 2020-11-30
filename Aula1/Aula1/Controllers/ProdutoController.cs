@@ -10,9 +10,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Nancy.Json;
 using Aula1.Util;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Aula1.Controllers
 {
+	[Authorize("CookieAuth")]
 	public class ProdutoController : Controller
 	{
 		public IActionResult Index()
