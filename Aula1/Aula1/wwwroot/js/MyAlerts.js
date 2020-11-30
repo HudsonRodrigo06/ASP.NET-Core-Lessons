@@ -41,7 +41,7 @@
 			msg,
 			'success'
 		).then(function () {
-			window.location = redirect;
+			//window.location = redirect;
 		})
 
 	},

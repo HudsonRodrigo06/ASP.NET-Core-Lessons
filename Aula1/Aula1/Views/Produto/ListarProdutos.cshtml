@@ -1,10 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ListarProdutos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section javascript {
+
     <!-- jQuery -->
     <script src="~/template/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -22,36 +23,16 @@
     <!-- page script -->
     <script src="~/lib/fancybox/dist/jquery.fancybox.min.js"></script>
 
-    <script src="~/js/Views/Produto/Index.js"></script>
-    <script src="~/js/Views/Produto/Cadastrar.js"></script>
-
+    <script src="~/js/Views/ListarProdutos/index.js"></script>
 }
 
 @section estilos {
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/template/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="~/template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/template/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-    <link href="~/lib/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet" />
-    <link href="~/css/Views/Produtos/Index.css" rel="stylesheet" />
-
     <style>
-        #cadastrar:hover {
-            cursor : pointer;
+        img:hover {
+            cursor: pointer;
         }
     </style>
-
 }
-
-
 
 <input type="hidden" id="id" value="" />
 <!-- Main content -->
@@ -63,7 +44,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Gerenciar Produtos <img id="cadastrar" onclick="index.telaCadastrar()" alt="Adicionar Novo" title="Cadastrar Novo" src="~/images/icons/plus-square-solid.svg" width="20" height="20" style="position:absolute; right:20px;" /></h3>
+                        <h3 class="card-title">Lista de Produtos </h3>
                     </div>
 
                     <!-- /.card-header -->
@@ -71,6 +52,10 @@
 
                         <div class="form-group col-3">
                             <input type="text" class="form-control" id="table-filter" placeholder="O que deseja buscar?">
+                        </div>
+
+                        <div class="form-group col-3">
+                            Ver carrinho >> <img onclick="index.exibirCarrinho()" title="Exibir Carrinho" src="/images/icons/shopping-cart-solid.svg" width="20" height="20" />
                         </div>
 
                         <table id="products-table" class="table table-bordered table-striped">
@@ -85,8 +70,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
-
                             </tbody>
                             <tfoot>
                                 <tr>

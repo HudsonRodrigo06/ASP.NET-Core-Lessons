@@ -6,6 +6,10 @@ using Aula1.DAL;
 using Aula1.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Nancy.Json;
+using Aula1.Util;
 
 namespace Aula1.Controllers
 {
@@ -37,6 +41,11 @@ namespace Aula1.Controllers
 
 
 
+			return View();
+		}
+
+		public IActionResult Carrinho()
+		{
 			return View();
 		}
 
@@ -113,15 +122,45 @@ namespace Aula1.Controllers
 			lista = pd.getProdutos();
 
 			//string sLista = JsonSerializer.Serialize(lista);
-			bool ok = (lista != null);
+			bool ok = (lista != null && lista.Count > 0);
 
 			return Json(new
 				{
 					operacao = ok,
 					lista = lista
+				}
+			);
+		}
+
+		public IActionResult ConsultarCarrinho([FromBody] System.Text.Json.JsonElement dados) 
+		{
+			ProdutoDAL pd = new ProdutoDAL();
+			List<Produto> lista = new List<Produto>();
+
+			JavaScriptSerializer js = new JavaScriptSerializer();
+			LSProd[] lsprods = js.Deserialize<LSProd[]>(dados.ToString());
+
+			foreach (var item in lsprods)
+			{
+				lista.Add(pd.getProduto(item.Prodid));
+			}
+
+			bool ok = (lista != null && lista.Count > 0);
+
+			return Json(new
+			{
+				operacao = ok,
+				lista = lista
 			}
 			);
 		}
+
+		public IActionResult ListarProdutos() 
+		{
+
+			return View();
+		}
+
 
 		public IActionResult Remover(string q)
 		{

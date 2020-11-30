@@ -5,6 +5,15 @@
     });
 });
 
+$(document).ready(function () {
+    $("#table-filter").on("keyup", function () {
+        var value = $(this).val().toUpperCase();
+        $("#products-table tbody tr").filter(function () {
+            $(this).toggle($(this).text().toUpperCase().indexOf(value) > -1)
+        });
+    });
+});
+
 // JSON
 let index = {
 

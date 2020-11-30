@@ -384,9 +384,6 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\bin\Debug\netcoreapp3.1\runtimes\win\lib
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.csprojAssemblyReference.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.AssemblyInfoInputs.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.AssemblyInfo.cs
-C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.csproj.CoreCompileInputs.cache
-C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cs
-C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.RazorAssemblyInfo.cache
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.RazorAssemblyInfo.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.TagHelpers.input.cache
@@ -414,3 +411,10 @@ C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Defa
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutSimples.cshtml.g.cs
 C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Default\ExemploJSToDoList.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Produto\ListarProdutos.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Razor\Views\Produto\Carrinho.cshtml.g.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\bin\Debug\netcoreapp3.1\Nancy.dll
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.csproj.CoreCompileInputs.cache
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cs
+C:\www\ASP.NET-Core-Lessons\Aula1\Aula1\obj\Debug\netcoreapp3.1\Aula1.MvcApplicationPartsAssemblyInfo.cache

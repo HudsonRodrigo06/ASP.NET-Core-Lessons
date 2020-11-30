@@ -8,6 +8,9 @@ $(document).keypress(function (e) {
 });
 
 
+
+
+
 // objeto JS 
 // objeto literal: que não nasce da instancia de uma classe
 

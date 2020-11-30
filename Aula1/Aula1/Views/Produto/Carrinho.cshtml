@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Carrinho";
+    Layout = "~/Views/Shared/_LayoutSimples.cshtml";
+}
+
+@section estilos {
+    <style>
+        img:hover {
+            cursor: pointer;
+        }
+
+        .fancybox-slide--iframe .fancybox-content {
+            width: 600px;
+            height: 1200px;
+            max-width: 80%;
+            max-height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+    </style>
+
+
+
+
+}
+
+@section javascript {
+    <script src="~/js/Views/Carrinho/index.js"></script>
+}
+
+<input type="hidden" id="id" value="" />
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Carrinho de Comprar</h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="form-group col-3">
+                            <input type="text" class="form-control" id="table-filter" placeholder="O que deseja buscar?">
+                        </div>
+
+                        <table id="products-table" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Qtde</th>
+                                    <th>Total</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Qtde</th>
+                                    <th>Total</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

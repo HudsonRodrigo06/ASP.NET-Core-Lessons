@@ -52,8 +52,22 @@
 
             destruir: function () {
                 sessionStorage.removeItem("dados");
+                sessionStorage.removeItem("carrinho");
+            },
+
+            teste: function () {
+
+                var carrinho = [1, 2, 3, 4];
+                sessionStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+                carrinho.push(10);
+                sessionStorage.setItem("carrinho", JSON.stringify(carrinho));
             }
         }
+
+        
+
+
     </script>
 
 </head>
@@ -73,6 +87,7 @@
         <input type="button" value="ler" onclick="ss.ler()" />
         <div id="mostrarSS"></div>
         <input type="button" value="destruir" onclick="ss.destruir()" />
+        <input type="button" value="teste" onclick="ss.teste()" />
     </div>
 
 

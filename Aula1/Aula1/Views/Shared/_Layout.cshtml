@@ -29,8 +29,9 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="~/template/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
-    
-    
+
+    <link href="~/lib/fancybox/dist/jquery.fancybox.css" rel="stylesheet" />
+
     <link href="~/css/global.css" rel="stylesheet" />
     @RenderSection("estilos", false)
 
@@ -185,7 +186,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+             with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -196,7 +197,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./Produto/Index" class="nav-link active">
+                                    <a href="/Produto/Index" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Produtos</p>
                                     </a>
@@ -207,12 +208,31 @@
                                         <p>Usuários</p>
                                     </a>
                                 </li>
+                                
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Comprar
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
+                                    <a href="/Produto/ListarProdutos" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
+                                        <p>Catálogo</p>
                                     </a>
                                 </li>
+                                
                             </ul>
                         </li>
 
@@ -292,7 +312,7 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/template/dist/js/pages/dashboard.js"></script>
     <script src="~/template/dist/js/demo.js"></script>
-
+    <script src="~/lib/fancybox/dist/jquery.fancybox.js"></script>
 
     <script src="~/template/sweetalert2/dist/sweetalert2.all.js"></script>
     <script src="~/js/MyAlerts.js"></script>
