@@ -36,7 +36,7 @@ let index = {
 				Senha: senha.value,
 			}
 
-			HTTPClient.post("Login/Logar", dados)
+			HTTPClient.post("/Login/Logar", dados)
 				.then(function (retornoServidor) {
 
 					return retornoServidor.json(); 
@@ -50,6 +50,9 @@ let index = {
 						//dados.Nome = objJson.userName;
 						//HTTPClient.post("Default/AtribuirNome", dados).then();
 						myalert.sucessMsg("Login efetuado com sucesso!", "default");
+						
+						
+						window.location.replace("/Produto/ListarProdutos");
 					}
 					else
 						myalert.errorMsg("Login inválido");
